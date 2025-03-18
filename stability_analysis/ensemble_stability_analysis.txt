@@ -1,0 +1,10 @@
+ENSEMBLE STABILITY ANALYSIS
+==========================
+
+Hypothesis: TYC is closer to Indus than to other scripts
+
+Total models in ensemble: 5
+Original conclusion with all models: Indus closer
+Models that change conclusion when removed: 0
+
+CONCLUSION: Ensemble is stable. Removing any single model does not change the overall conclusion.
