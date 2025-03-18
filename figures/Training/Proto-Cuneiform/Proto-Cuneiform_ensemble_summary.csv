@@ -1,0 +1,6 @@
+model_idx,seed,val_loss,epoch,model_path
+1,42,8.801242896488734,11,/content/drive/MyDrive/script_analysis/models/Proto-Cuneiform_ensemble/Proto-Cuneiform_ensemble_1_hybrid_extractor_best.pth
+2,43,8.71736410685948,11,/content/drive/MyDrive/script_analysis/models/Proto-Cuneiform_ensemble/Proto-Cuneiform_ensemble_2_hybrid_extractor_best.pth
+3,44,8.819251537322998,7,/content/drive/MyDrive/script_analysis/models/Proto-Cuneiform_ensemble/Proto-Cuneiform_ensemble_3_hybrid_extractor_best.pth
+4,45,8.773778438568115,9,/content/drive/MyDrive/script_analysis/models/Proto-Cuneiform_ensemble/Proto-Cuneiform_ensemble_4_hybrid_extractor_best.pth
+5,46,9.27264860698155,1,/content/drive/MyDrive/script_analysis/models/Proto-Cuneiform_ensemble/Proto-Cuneiform_ensemble_5_hybrid_extractor_best.pth

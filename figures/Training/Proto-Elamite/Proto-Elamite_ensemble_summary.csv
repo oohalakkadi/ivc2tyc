@@ -1,0 +1,6 @@
+model_idx,seed,val_loss,epoch,model_path
+1,42,9.465515518188477,13,/content/drive/MyDrive/script_analysis/models/Proto-Elamite_ensemble/Proto-Elamite_ensemble_1_hybrid_extractor_best.pth
+2,43,10.229036331176758,5,/content/drive/MyDrive/script_analysis/models/Proto-Elamite_ensemble/Proto-Elamite_ensemble_2_hybrid_extractor_best.pth
+3,44,9.9594895362854,1,/content/drive/MyDrive/script_analysis/models/Proto-Elamite_ensemble/Proto-Elamite_ensemble_3_hybrid_extractor_best.pth
+4,45,9.304905700683594,12,/content/drive/MyDrive/script_analysis/models/Proto-Elamite_ensemble/Proto-Elamite_ensemble_4_hybrid_extractor_best.pth
+5,46,9.408125591278075,11,/content/drive/MyDrive/script_analysis/models/Proto-Elamite_ensemble/Proto-Elamite_ensemble_5_hybrid_extractor_best.pth

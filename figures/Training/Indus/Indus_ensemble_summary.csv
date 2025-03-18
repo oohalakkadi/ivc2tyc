@@ -1,0 +1,6 @@
+model_idx,seed,val_loss,epoch,model_path
+1,42,9.65621223449707,3,/content/drive/MyDrive/script_analysis/models/Indus_ensemble/Indus_ensemble_1_hybrid_extractor_best.pth
+2,43,9.49264907836914,1,/content/drive/MyDrive/script_analysis/models/Indus_ensemble/Indus_ensemble_2_hybrid_extractor_best.pth
+3,44,9.3032808303833,11,/content/drive/MyDrive/script_analysis/models/Indus_ensemble/Indus_ensemble_3_hybrid_extractor_best.pth
+4,45,9.921699905395508,1,/content/drive/MyDrive/script_analysis/models/Indus_ensemble/Indus_ensemble_4_hybrid_extractor_best.pth
+5,46,10.057604217529297,1,/content/drive/MyDrive/script_analysis/models/Indus_ensemble/Indus_ensemble_5_hybrid_extractor_best.pth
