@@ -1,0 +1,1837 @@
+\documentclass[11pt,a4paper,oneside]{report}
+
+% If you get an error that says you need to use LuaLaTex or XeLateX, you will need to change your compiler.  In Overleaf, this is done in the menu (upper left) which will open a drop down menu where you can change the default compiler to XeLaTeX.  This is necessary to support the special fonts.
+
+\usepackage{amsmath,amssymb}
+\usepackage{parskip}
+\usepackage{pdflscape}
+\usepackage{graphicx}
+\usepackage{subcaption} 
+\usepackage{xcolor}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{longtable,booktabs,array}
+\usepackage{float}
+\usepackage{siunitx}  
+
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+  {\sffamily\bfseries\huge}
+  {\Large \chaptertitlename\ \thechapter}
+  {2ex}
+  {\titlerule
+   \vspace{1ex}%
+   \filright\MakeUppercase}
+  [\vspace{1ex}%
+\titlerule]
+\titleformat{\section}{\normalfont\sffamily\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\sffamily\large\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\normalfont\sffamily\normalsize\bfseries}{\thesubsubsection}{1em}{}
+
+\usepackage[style=numeric-comp, url=false]{biblatex}
+\addbibresource{bibfile.bib}
+
+\usepackage{enumitem}  % For better list control
+\newcommand{\hypothesis}[2]{
+    \item \textbf{Hypothesis 1:} 2
+}
+
+\usepackage[no-math]{fontspec}
+\usepackage{unicode-math}
+\defaultfontfeatures{Ligatures=TeX,Numbers=Lining}
+\setmainfont{Source Serif Pro}[BoldFont={Source Serif Pro Semibold}]
+\setsansfont{Source Sans Pro}[BoldFont={Source Sans Pro Semibold}]
+\IfFontExistsTF{Cambria Math}{\setmathfont{Cambria Math}[Scale=1]}{\setmathfont{Asana Math}}
+
+\usepackage{xeCJK}
+\setCJKmainfont{Noto Sans CJK SC}
+\setCJKsansfont{Noto Sans CJK SC}
+
+\newcommand{\instructions}[1]{{\color{orange}\itshape #1}}
+
+\usepackage{upquote}
+\usepackage[allcolors=blue,colorlinks=true]{hyperref}
+\usepackage{xurl}
+\usepackage{microtype}
+\usepackage{bookmark}
+\usepackage{calc}
+\usepackage{etoolbox}
+\setlength{\parindent}{1cm} 
+\urlstyle{same}
+
+\begin{document}
+
+% About Majors at DKU
+\noindent \instructions{Background:  Duke Kunshan University (DKU) is an interdisciplinary institution that grants dual undergraduate degrees, an MOE Chinese degree and a degree from Duke University in Durham, United States. The principal structure of DKU majors is robustly interdisciplinary. No student confines their study to a single discipline (for example, biology or economics). Instead, all students engage in broad inquiry related to a subject or question (for example, political economy or global health) and take a wide variety of courses related to that area (for example, in public policy, history, ethics, or economics). As a result, our graduates are prepared to engage in a wide variety of inquiries using multiple methodologies to address complex issues that require interdisciplinary approaches.  
+This has implications for our vision and expectations of undergraduate theses and design projects, which reflect this broad interdisciplinary training. At DKU, every student completes a two-year project known as signature work which consists of multiple interconnected parts including thematic courses, experiential learning, capstones, and a final product. It seeks to integrate students' interdisciplinary educational experience and culminates in the creation of a product in a scholarly, creative, or applied nature in lieu of an undergraduate thesis or design required by JED. Because DKU encourages students to cultivate their independence and creativity as one of its institutional student learning outcomes, the student-led signature work projects often reflect students' own particular interdisciplinary interests and training.  In addition, signature work has an intensive emphasis on problem-solving and skill-development which is much needed for any interdisciplinary inquiry; thus, students' final products are evidence of transferrable skills that students have acquired and demonstrated through the 2-year program, rather than content knowledge narrowly defined by disciplinary training.  
+In sum, while the Chinese major declared with any given student might be construed narrowly, the experience of our students is much broader—and intentionally so.  This is a distinctive feature of our curriculum, and this distinctiveness results in broadly interdisciplinary submissions from our graduates' submitting theses or design projects. We have designed this to prepare our students for a wide variety of graduate programs in China and the West, where interdisciplinary training is a competitive advantage.}
+\thispagestyle{empty}
+
+% Author name (capitalized in its regular way)
+\newcommand{\authorname}{Ooha Lakkadi Reddy}
+
+% Title (cannot exceed three lines)
+\newcommand{\thetitle}{Rerouting Connection: Hybrid Computer Vision Analysis Reveals Visual Similarity Between Indus and Tibetan-Yi Corridor Writing Systems}
+
+% Date of submission with normal capitalization. Use the format January 29, 2022.
+\newcommand{\submissiondate}{March 9, 2025}
+
+% Mentor: First Name Last Name (normal capitalization)
+\newcommand{\mentor}{Lincoln Rathnam}
+
+% Academic Unit (no abbreviations)
+\newcommand{\academicunit}{Division of Arts and Humanities}
+
+% Mentor: First Name Last Name (normal capitalization)
+\newcommand{\comentor}{Mustafa Misir}
+
+% Academic Unit (no abbreviations)
+\newcommand{\coacademicunit}{Division of Natural and Applied Sciences}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% DO NOT CHANGE DIRECTLY THE CONTENTS OF THE TITLE PAGE.
+%% TO CUSTOMIZE THE TITLE PAGE CHANGE THE DEFINITIONS OF THE COMMANDS
+%% \authorname, \thetitle, \submissiondate, \mentor, \academicunit
+
+\begin{titlepage}
+
+\vspace*{\bigskipamount}
+
+\begin{center}
+{\sffamily\LARGE\bfseries\MakeUppercase\thetitle\par}
+
+\bigskip
+
+by
+
+\bigskip
+
+{\Large \authorname}
+
+\bigskip
+
+Signature Work Product, in partial fulfillment of the \\
+Duke Kunshan University Undergraduate Degree Program
+
+\bigskip
+
+\emph{\submissiondate}
+
+\bigskip
+
+Signature Work Program \\
+Duke Kunshan University
+
+\end{center}
+
+\vfill
+
+\textbf{\textsf{APPROVALS}}
+
+\bigskip\bigskip\bigskip
+\hrule
+
+Mentor: \mentor, \academicunit
+
+\bigskip\bigskip\bigskip
+\hrule
+
+Co-Mentor: \comentor, \coacademicunit
+
+\bigskip\bigskip\bigskip
+\hrule
+
+\end{titlepage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Front matter
+\clearpage
+\pagenumbering{roman}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setcounter{tocdepth}{0} % Only top-level units (chapters) should appear in the TOC
+\tableofcontents
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter*{Abstract}
+\addcontentsline{toc}{chapter}{Abstract}
+\noindent\hspace{1cm}
+This thesis employs a hybrid CNN-Transformer architecture, in conjunction with a detailed anthropological framework, to investigate potential historical connections between the visual morphology of the Indus Valley script and pictographic systems of the Tibetan-Yi Corridor. Through an ensemble methodology of three target scripts across 15 independently trained models, we demonstrate that Tibetan-Yi Corridor scripts exhibit approximately six-fold higher visual similarity to the Indus script (61.7\%-63.5\%) than to the Bronze Age Proto-Cuneiform (10.2\%-10.9\%) or Proto-Elamite (7.6\%-8.7\%) systems. 
+
+Additionally, in contrary with our current understanding of the networks of the Indus Valley Civilization, the Indus script unexpectedly maps closer to Tibetan-Yi Corridor scripts, with a mean cosine similarity of 0.629, than to the aforementioned contemporaneous West Asian signaries, both of which recorded mean cosine similarities of 0.104 and 0.080 despite their close geographic proximity and evident trade relations. Across various dimensionality reduction practices and clustering methodologies, the Indus script consistently clusters closest to Tibetan-Yi Corridor scripts. 
+
+Our computational results align with qualitative observations of specific pictorial parallels in numeral systems, gender markers, and key iconographic elements; this is further supported by archaeological evidence of sustained contact networks along the ancient Shu-Shendu road in tandem with the Indus Valley Civilization's decline, providing a plausible transmission pathway. While alternative explanations cannot be ruled out, the specificity and consistency of observed similarities challenge conventional narratives of isolated script development and suggest more complex ancient cultural transmission networks between South and East Asia than previously recognized.
+
+\vspace{4\bigskipamount}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter*{Acknowledgements}
+\label{acknowledgements}
+\addcontentsline{toc}{chapter}{Acknowledgements}
+
+This paper has lived in every single thought I’ve had for almost a year, and I have an endless number of people to be unendingly gratuitous towards. That being said, I will make a hearty attempt to address them sufficiently nonetheless.
+
+I would like to thank my mentors, Professor Lincoln Rathnam and Professor Mustafa Misir, who helped me shape my excited musings into a interdisciplinary work I am incredibly proud of. I could not have accomplished this without their assistance and review.
+
+A special thanks to the Lijiang Dongba Cultural Research Institute and especially Siyu Li for guiding and assisting my anthropological research on the Naxi Dongba script and culture last December.
+
+I also extend a heartfelt thank you to leading Tibetologist John Vincent Bellezza, who reviewed my early evidence and raised questions and considerations that led me towards a much more comprehensive anthropological argument.
+
+Of course, I must thank all the incredible teachers I have had throughout my life; I am forever grateful to my third grade teacher, Doris Barbour, who recognized my early love for learning and has stayed dedicated to cultivating it my entire life onwards. She has supported my academic career at every turn, and I cannot wait to share this work with her now.
+
+My undergraduate years have been tumultuous, to say the least, but I could not have made it through this project without the consistent support of my friends. To those who saw me through late and sleepless nights, edited the early drafts I threw their way, heard me question the merits of my own work, and finally witnessed my joy when the numbers ran: to you, a thank you heard round the world.
+
+And finally, a loving thank you to my mother. The word for mother in Sumerian is \textit{ama}, very similar to the Telugu word \textit{amma} with which I address my own mother. Interestingly, this is also the Tibetan and Dongba word for mother, and—by reconstruction of the name of the indigenous Hindu mother goddess, Amba—is a possible candidate for the Indus word for mother as well. While this can be marked up to the universal sounds we are biologically inclined to make across human evolution and existence, I believe \textit{amma} may very well be the oldest word in the world. My love for her is concrete in such ways; it is universal and unmoving, across oceans and borders. In this work, which took so much of myself to create, I must thank her, as it was her who crafted that self.
+
+This paper has been accepted for presentation at the Computer Applications and Quantitative Methods in Archaeology (CAA) Conference 2025. 
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Add captions to your figures for them to appear in the List of Figures.
+% Alternatively, comment out the next two lines if there are no tables 
+% in your document.
+\addcontentsline{toc}{chapter}{List of Figures}
+\setcounter{tocdepth}{1}
+\listoffigures\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Add captions to your tables for them to appear in the List of Tables.
+% Alternatively, comment out the next two lines if there are no tables 
+% in your document.
+\addcontentsline{toc}{chapter}{List of Tables}
+\setcounter{tocdepth}{1}
+\listoftables\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Main matter
+\clearpage
+\pagenumbering{arabic}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Introduction}
+\label{introduction}
+
+
+\section{Background and Significance}
+\subsection{An Unexplored Corridor for the Indus Valley}
+\noindent\hspace{1cm}
+The resilience of language and scripture across millennia has long captivated experts across a range of disciplines, from history to biology, for its fundamental role in memorializing and contextualizing human communication and culture. Yet few problems have captured the intrigue and fascination of the world like the still-undeciphered script used by the Indus Valley Civilization (IVC) of modern-day Pakistan and Northwestern India, dated to circa 2600-1900 BC \cite{parpola_special_2005}. Despite holding contemporaneity with other famous Bronze Age writing systems like Sumerian cuneiform and Ancient Egyptian hieroglyphics, the Indus script endures as one of the greatest archaeological mysteries of our time. Several competing hypotheses on the etymological classification and relatives of the script have risen, with proposed connections to reconstructed Proto-Dravidian, the Austroasiatic family \cite{witzel_linguistic_2009}, or other isolated linguistic groups, as well as a contingent supporting a link to West Asian logosyllabic languages of the era and prior—namely Proto-Elamite and Sumerian proto-cuneiform pictographs, both noted to have visual similarities to the Indus script despite their ongoing classification as language isolates\footnote{From this point onward, "West Asia" will refer specifically to Sumer (as well as descendant Mesopotamian civilizations i.e. Babylon, Akkad, Assyria) and Elam within the context of this paper.} \cite{mcalpin_toward_1974}. However, beyond these debates lies an underexplored possibility: a connection to lesser-known ancient pictographic traditions along the Tibetan-Yi corridor (TYC), where minority scripts may offer new insight into the transmission of symbols across early trade and migration networks.
+
+Thus far, the minority languages of the historic corridor have fallen beyond the scope of previous Indologist analysis. Positioned along the eastern edge of the Tibetan Plateau and cradled within the Hengduan Mountains, the TYC has served as a significant axis for trade, migration, and symbolic exchange from prehistory onwards; it remains one of the most linguistically, ethnically, and culturally diverse regions in China \cite{shi_ethnic_2018}. Of the many Tibeto-Burman-speaking ethnic groups that reside in this natural corridor, we take special interest in the Naxi people of Northeastern Yunnan province (located at the southernmost end of the Corridor), whose Dongba script is hailed as the world's last living pictographic script\footnote{It can be argued that the Ba-Shu pictographs share a closer visual affinity to the Indus script than Dongba, and should be the focus of our work; in doing so, this study would be severely limited by the lack of information surrounding the Ba-Shu cultures.}. Although no direct linguistic studies have yet linked the Naxi Dongba script to the paleographic traditions of the West, preliminary visual analyses \cite{city_museum_of_naxi_culture_comparison_nodate} have noted overlapping iconographic elements, particularly in the representation of natural forces, gender definitives, and numerical notation, that cannot be attributed to the simultaneously developed logosyllabary of Han China to the east.
+
+\begin{figure}[H] 
+    \centering
+    \includegraphics[width=1\textwidth]{Visualizations/Figures/Timeline.pdf}
+    \caption[Script Usage Timeline]{A timeline illustrating the approximate periods of relevant script systems.}
+    \label{fig:timeline}
+\end{figure}
+
+The specific origin point of the Dongba script remains uncertain, but its symbolic repertoire does share visual similarities with other script relics across the TYC. Specifically, we have chosen to include additional analysis using the earliest pictographic script of the Ba-Shu culture and Classical Yi—case studies in which similarities may suggest a broader continuity of symbolic representation in the region. The non-Sinitic nature of the Ba-Shu script, in particular, has piqued curiosity given the proximity to Han China, signaling it may be more appropriate to contextualize the Sanxingdui and Jinsha cultures within the framework of the TYC rather than as an isolated cultural phenomenon \cite{sage_ancient_1992}.
+
+Despite extensive scholarship on the Indus script and a focused revitalization of the Naxi Dongba script, no comprehensive study has yet attempted to compare these pictographic\footnote{The Indus script is understood to likely be logosyllabic and not entirely pictographic; we claim it as pictographic here to encapsulate the nature by which the basic symbols were formed.} systems or explore potential linguistic or symbolic transmission between the two regions; this is more than likely due to the geographic and disciplinary divides between Tibetology/Sinology and Indology. This paper employs a hybrid deep learning approach combining convolutional neural network (CNN) and Transformer architecture to analyze visual relationships between the Indus Valley script, Proto-Cuneiform, Proto-Elamite, and ancient Tibetan Yi-Corridor (TYC) scripts. Leveraging similarity analysis through hierarchical clustering and visualization techniques, the study rigorously assesses potential script connections while controlling for biases through statistical validation and multi-model consensus approaches that mitigate individual model artifacts. We seek to potentially suggest, via computer vision praxis, a novel transmission route for the Indus culture and tradition, be it demic or ideologic, that has thus far fallen outside the realm of consideration.
+
+\subsection{Significance}
+\noindent\hspace{1cm}
+Unlike other languages of this era that are known to us, the Indus script exists in fragments, its meaning locked behind a lack of direct linguistic continuity and a surviving corpus consisting primarily of very short clay inscriptions. Deciphering the scripts goes beyond academic exercise; this work holds the key to contextualizing India's pre-Vedic history—a period which remains largely unknown despite its immense longevity and complexity—in the ways archaeologists have been able to reconstruct the histories of ancient Egypt and Mesopotamia.
+
+At the same time, the TYC has emerged as one of the most promising yet understudied cultural nexuses in early Asia ever since the turn of the 21st century \cite{shi_ethnic_2018} due to its unique positioning as a geographical space challenging existing narratives about the forces that shaped global culture. Despite difficulties recounting the diverse oral traditions of these nomadic people and the loss of many artifacts, the corridor remains a vibrant ethnic and cultural diffusion layer, bridging the two massive tectonic plates that are the Tibeto-Burman people and the Han Chinese. In reconstructing the historical trajectory of migration flows in the TYC, we gain insight not only into the longevity of symbolic and ethnographic artistry but also into the broader transmission of iconography in early Asia.
+
+Meaningful statistical patterns in our computational analysis reveal that the movement of symbols, ideas, and potentially even writing systems followed routes that have long been invisible to traditional scholarship. We aim to introduce a computationally relevant methodological approach to one of the oldest unresolved questions in linguistics and archaeology: how early scripts developed, diffused, and, in some cases, disappeared.
+
+\section{Research Questions and Hypotheses}
+\noindent\hspace{1cm}
+To mitigate false positives, we introduce dual hypotheses for the origination of the visual similarities we have initially identified.
+
+\begin{enumerate}[label=\textbf{Hypothesis \arabic*:}, leftmargin=*, labelsep=1em]
+    \item \textbf{Indus Influence on the Tibetan-Yi Corridor}\\
+    The Dongba script and related scripts in the TYC contain structural or symbolic features in common with the Indus script, suggesting, at the very least, transmission of iconography. If machine learning analysis reveals significant correlations in visual style, it would indicate that TYC pictographic traditions may have evolved from Indus influence.
+
+    \item \textbf{Alternative Influence from Proto-Elamite or Sumerian Traditions}\\
+    Even if Indus-like elements preliminarily appear in TYC scripts, they may instead originate from an earlier West Asian tradition due to ongoing cultural contact between the civilizations. If TYC scripts show greater structural affinity to Proto-Elamite or Sumerian pictographs, this would suggest that Indus-TYC similarities are secondary to a broader diffusion of West Asian script traditions, likely via the northern edge of the Plateau.
+\end{enumerate}
+
+\section{Objectives and Scope}
+This thesis's objectives are as follows:
+
+\begin{enumerate}
+    \item Establish anthropological plausibility for transmission between the IVC and TYC.
+    \item Develop and implement a hybrid deep learning methodology to analyze and visualize structural similarity between TYC scripts and Indus/Bronze Age West Asian scripts.
+    \item Assess potential implications for early Asian anthropology as well as the ongoing decipherment efforts of the Indus script.
+\end{enumerate}
+The scope of this paper is not an attempt to definitively decipher the Indus script but rather to test for statistically significant visual similarities between ancient Indus and TYC scripts, with a strict focus on morphology rather than phonology. Findings are grounded in pattern recognition and comparative analysis rather than speculative linguistic association.
+
+\chapter{Anthropological Framework}
+\label{anthropological framework}
+\noindent\hspace{1cm}
+This section seeks to historically, archaeologically, and ethnographically establish the framework necessary to contextualize the potential for transmission from the Indus Valley Civilization to the pictographic traditions of the TYC. The interdisciplinary nature of this study requires a range of specialized research providing insights across archaeology, geology, and computational epigraphy, among others, to sufficiently and convincingly span the temporal and spatial gap evident within our hypotheses.
+
+We begin with an assessment of the current state of IVC Indology, particularly in relation to the decipherment of the Indus script and the historical context in which these early inhabitants existed, as well as reviewing current classifications theories surrounding the modern descendants of the Indus script and language. In parallel, we consider the ethnographic and migratory history of the nomadic people of the TYC, namely the Naxi, who, over centuries, maintained pictographic traditions that remain distinct from Chinese logographic evolution and could, therefore, preserve older symbolic continuities. This presents a convincing case for the value of further exploring potential anthropological relations, augmented by a review of the preliminary morphological similarities we have identified between the Dongba and Indus scripts, 
+
+This framework will also establish the assumption underlying our study that the pictographic traditions of the TYC have external influence, although potentially indirect. The Dongba script and religion are directly connected to Tibetan Bön, which has a rich history of indigenous rock art glyphs dating to the centuries following the fall and dispersal of the Indus Valley people and culture and predating the arrival of Buddhism in Tibet \cite{bellezza_comprehensive_2023}. The Sanxingdui civilization also rose to prominence during this time, with only seven unearthed pictographs preceding the three distinct epigraphic practices that followed. In parallel, radiocarbon dating proves an uptick in usage along the Shu-Shendu road at this time. In undertaking our work, we attribute the morphological similarities identified to broader global pictographic tradition, although we do not dismiss the plausibility of independent origination altogether.
+
+In establishing this anthropological framework, our goal is to provide historical justification and validity to the pursuit of computational and structural comparisons between the Indus script and the pictographic systems of the TYC. This approach seeks to illuminate understudied dimensions of script diffusion in early Asia, as well as defend the value of expanding multidisciplinary scholarship on Bronze Age South Asia, the Neolithic Qinghai-Tibet Plateau, and their intersections. Our work also establishes possible paths of Indian subcontinental continuity for a collective tradition, given the final results (\ref{results}) of our computational analysis.
+
+\section{The Decipherment of the Indus Script}
+\noindent\hspace{1cm}
+The decipherment of the Indus script is an ongoing field of study that has persisted consistently since the first known discovery of an Indus seal in 1875 by Sir Alexander Cunningham \cite{parpola_special_2005}. Efforts to interpret the script take a few preset routes, including reconstructions of proto-phonetics, morphological analysis, and classification by comparison. Despite the wealth of contributions from a number of esteemed scholars since 1875, the Indus script is still far from cracked. Scholars have yet to reach any acceptable consensus on the language encoded, the type of signs, or even the overall structure of the script \cite{jyothibabu_iravatham_2023}. Additionally, a few key challenges exist that obstruct Indus script decipherment when compared to similar efforts with other lost languages: the small corpus size, short inscription lengths, a lack of accepted descendant(s), and no discovered bilingual artifacts. There has long been hope to discover an equivalent to the Rosetta Stone — heretofore, Indologists have not been similarly fortunate.
+
+The entire discovered script consists of 419 signs across 2,290 artifacts, most of which are clay seals and graffiti (potentially leading to implicit contextual sample bias in signs found vs. those lost to time). In 419 signs, frequency varies massively—219 appear fewer than five times, of which 113 occur only once \cite{zvelebil_dravidian_1997}. This can be partially attributed to the presence of complex graphemes (compound symbols), likely written as one symbol to save space on tablets \cite{fuls_ancient_2020}. Despite there being 2,290 inscribed artifacts, most inscriptions are constrained to about five symbols on average, with some even being only one or two signs. Only eight texts are longer than 15 signs, with the longest continuous text clocking in at 17 signs. The brevity of analyzable Indus datasets has proved a considerable barrier in machine learning decipherment, which has been verifiably effective in deciphering Ugaritic and Linear B (although both had known descendants) \cite{luo_neural_2019}.
+
+\subsection{Classification}
+\noindent\hspace{1cm}
+This inability to concretely identify which languages have claim to Indus progenitorship has sparked inflamed debate over the script's etymological classification. Much of this discourse is embroiled within non-academic nationalism and identity politics seeking to tie a specific populace or ideology to the oldest discovered civilization on the subcontinent \cite{kb_want_2025}. Yet, despite the potential for tangentiality, classification within the scope of our paper serves solely to scientifically consider the potential modern-day implications of IVC connection to the TYC and the contextual significance of our results in pertinence to decipherment.
+
+Respected scholars like the late Iravatham Mahadevan \cite{mahadevan_akam_2010, mahadevan_dravidian_2014, mahadevan_indus_2009, mahadevan_indus_2011, mahadevan_indus_2021, mahadevan_interpreting_2015, mahadevan_study_1975, mahadevan_towards_nodate, mahadevan_wide-ranging_1998} and Asko Parpola \cite{parpola_corpus_2010, parpola_deciphering_1994, parpola_religion_1988, parpola_roots_2015, parpola_special_2005} ascribed strongly to the theory that the Indus script is proto-Dravidian, a language family now primarily concentrated in the south of India with no known relatives. Both scholars have compiled detailed mappings of reconstructed proto-Dravidian onto Indus pictographic features, corroborated by careful epigraphic evidence. This work saw a major advancement in 2021 by researcher Bahata Ansumali Mukhopadhyay through her well-received reconstruction of the Indus word for "tooth" using Bronze Age and Dravidian linguistic and archaeogenetic sources \cite{mukhopadhyay_ancestral_2021}. Yet, despite extensive peer-reviewed scholarship supporting the Proto-Dravidian hypothesis, some experts maintain that there is insufficient evidence to definitively classify the Indus script as Dravidian.
+
+Among other prominent theories is a faction that has sought to link the Indus script to the later Brahmi script (first attested in the mid-3rd century BCE Edicts of Ashoka) and thus to spoken Sanskrit or Prakrit. Much of this scholarship is derived from opposition to the Aryan migration theory in a crusade to claim the Indian origin of the Indo-European language family in addition to the aboriginality of the Indo-Aryan people. Nevertheless, this has been firmly disproven—if not solely by archaeogenetic evidence, which definitively confirms the southwards migration of a branch of Indo-Iranians with steppe pastoralist DNA after the fall of the IVC \cite{reich_reconstructing_2009, narasimhan_formation_2019}—by the absence of urban cities in early Vedic civilization (c. 1750-500 BCE). The Indus script has been proven to share greater pictorial and stylistic similarities with Proto-Elamite and Sumerian pictographs (Proto-Cuneiform) than Brahmi, which is more closely linked to the Indo-European Greek and Phoenician alphabets \cite{daggumati_convolutional_2023, daggumati_data_2018, daggumati_data_2019}. Since we know the IVC had direct trade relations with Sumer and Elam, inferable by the number of Indus artifacts discovered in West Asia, it is understandable the script's closest known contemporaries are other pictographic languages of its age (although most scholars agree this is not due to common origin, but rather close contact and diffusion \cite{zvelebil_dravidian_1997}.)
+
+\section{The Harappans}
+\subsection{Discovery of the IVC}
+\noindent\hspace{1cm}
+While the first Indus seal was discovered in 1875, the IVC was not identified until September 20, 1924: the day a conclave of archaeologists assembled in Shimla for Sir John Marshall's announcement of the discovery of a new urban civilization. This news came off the backs of years of excavation in Harappa and Mohenjodaro by two Indian archaeologists, Daya Ram Sahni and Rakhaldas Banerji \cite{lahiri_finding_2013, lahiri_are_2017}. Harappa was the first site unearthed in 1921; henceforth, the IVC has also been colloquially referred to as the Harappan civilization. Thousands of IVC sites along the Ghaggar-Hakra River and the Makran Coast have been identified since the discovery of these two ancient urban centers, recognizable by their meticulous city planning, advanced sanitation networks, and distinctive material works.
+
+\subsection{The IVC, Epitomized}
+\noindent\hspace{1cm}
+The IVC was vast; undeniably the largest urban civilization of its time, it covered over 1,299,600 square kilometers (more than Ancient Egypt and Mesopotamia combined). The period of time that is attributed to the fully-evolved civilization spanned 700 years (2600 BC-1900 BC)—twice as long as the Ming Dynasty and four times longer than the Akkadian Empire, quantifiable as 28 generations \cite{khan_bricks_2013}. The first pre-Harappan\footnote{Time period denotation  of the era predating the maturity of Harappa, equivalent to Early Phase (3200-2600 BC).} cities, like Mehrgarh, Amri, and Kotdiji, existed before 3500 BC at the latest, almost a thousand years before the start of what is considered the main timeframe of the IVC. Distinct brick architecture style and urban design in the hills and valleys of modern-day Balochistan stretch the oldest dating of the Indus tradition back even further to around 7000 BC \cite{khan_bricks_2013, brunswig_radiocarbon_1975}.
+It is likely the Harappans\footnote{Used here in reference to the peoples of the entire IVC, rather than just the Harappan site.} had no natural enemies, as their geographic boundaries assured them relative safety and security \cite{mcintosh_peaceful_2001}. Instead of conquest, the Harappans engaged in extensive trade networks with other civilizations of their time. Sumerian records mention a land called 'Meluhha', which is often attributed to the IVC, allowing us to reconstruct the commercial contributions of the Indus people. In addition, Indus artifacts have been found across the lands that comprised Sumer and Elam, furthering the case for contact and cultural diffusion. The Harappans were incredibly skilled in naval trade and had developed early technology for long ocean voyages \cite{lahiri_harappa_1990}, evidenced by relics of Harappan trade on the Arabian peninsula as well as remnants of IVC port of Lothal in modern Gujarat, as well as numerous other smaller ports on Saurashtra. Through Sumerian contact, we are also able to contextualize the potential usage of Indus seals and inscriptions as a mirror of equivalent tablets in Mesopotamia used for identification as well as commercial designation \cite{mukhopadhyay_semantic_2023}.
+
+\subsection{The Decline of the IVC}
+\noindent\hspace{1cm}
+We would be amiss to not address the most pertinent yet anticlimactic question surrounding the IVC: the reason and execution of its decline. There is a large temporal gap between the abandonment of IVC cities and the earliest settlements of the Vedic period, leaving much unknown about the cultures of South Asia in the time between. The theory of Indo-Aryan invasion into the subcontinent has not only long been abandoned in favor of a gradual migration \cite{reich_reconstructing_2009} but also because it would not explain the lack of continuity in material culture; ergo, it is unlikely the Harappans were defeated in conquest. The most scientifically compelling factor currently attributed to its collapse is a geological change in monsoon patterns and the fluvial recession of the Ghaggar-Hakra River \cite{dutt_climate_2019,giosan_fluvial_2012}, both disastrous for a riverine society. Other potential theories concern the southward migration of the people of the Bactria-Margiana Archaeological Complex (BMAC) and the 3rd millennium fall in sea level disrupting vital Indus trade networks \cite{mcintosh_peaceful_2001}, as well as endemic malaria and possibly other diseases supported by biological analysis of human remains at Mohenjodaro \cite{arnott_disease_2024}. Whatever the reason, it stands that a sizeable demographic migration ensured eastward to the Himalayan foothills and southward to peninsular regions, leading to the abandonment of major IVC urban centers by 1900 BC (Figure \ref{fig:decline}).
+
+\begin{figure}[H] 
+    \centering
+    \includegraphics[width=1\textwidth]{Images/IVC_migration.png}
+    \caption[IVC Site Temporal Distribution Map]{Distribution of known IVC sites by time period \cite{khan_bricks_2013, law_building_2007}.}
+    \label{fig:decline}
+\end{figure}
+
+\section{Peoples of the Tibetan-Yi Corridor}
+\noindent\hspace{1cm}
+The TYC is credited as the natural pathway for the ethnic branching and eventual migration of the Tibeto-Burman-speaking peoples onto the Qinghai-Tibet plateau \cite{yao_genetic_2017}. The unity of varied oral traditions and genetic patterns affirm that these populations originated in the Yellow River basin of the Gansu-Qinghai region in pre-Neolithic times prior to a mass southward migration \cite{shi_ethnic_2018}. From there, the routing and timing of individual groups' movement down the corridor divided these early people into the 16 distinct ethnic minorities currently present within the TYC. The natural geographic isolation of the corridor within the Hengduan Mountains allowed for the preservation of diverse proto-cultures in modernity, making it an ideal environment to study the effects of ancient flows of people, technology, and tradition.
+
+\subsection{Migration Flows of the Naxi}
+\noindent\hspace{1cm}
+Within this unique cultural petri dish, we encounter the Naxi people of Lijiang, China. Like all TYC peoples, the Naxi can trace their origins in antiquity to the upper reaches of China's Yellow River basin and share close ethnic heritage with the Tibetan people\cite{yang_study_2024, he_gao_2017}. Not unlike the Ghaggar-Hakra River, paleoclimatological evidence shows that the climate of the basin became significantly colder and drier circa 6000 BC, driving the southward migration and separating Tibeto-Burman from Sinitic within the greater Sino-Tibetan language family (cite: Shuo Shi). This downward distribution trend was dominant in the TYC during the span of time from the beginnings of the pre-Neolithic demographic transmission until the Tang Dynasty, although we cannot pinpoint precisely when the Naxi people became a distinct identity. We do know, however, that they migrated in a fan-like pattern, beginning as one larger people and separating at crucial crossroads (or perhaps 'crossrivers') until they were distributed in a belt among the upper and mid-reaches of the Jinsha, Shuiluo, Wuliang, and Yalong basins (\cite{yang_study_2024})—geologically divided to the point of diversion.
+
+\subsection{The Dongba Script}
+\noindent\hspace{1cm}
+The Naxi are famous for their distinct Dongba script, hailed as the world's last living pictographic script \cite{nishida_living_1966}. Though the earliest surviving artifact on which the script can be found is dated to 30 AD \cite{kleo_treasures_nodate}, we cannot say for sure when the Dongba script was created, but analysis of environmental factors regarding the symbols for north and south point to its establishment occurring after the point at which the Naxi reached the Yunnan region \cite{li_dictionary_1944, zhang_tibetan-yi_2022}. It seems to have disseminated from west to east, with the most rudimentary form of the script beginning in the Western Rerko region (Figure \ref{fig:rerko}) and the most "advanced" hailing from the eastern Ludian region (Figure \ref{fig:ludian}) \cite{wang_developments_2001}. 
+
+\begin{figure}[H] 
+    \centering
+    \includegraphics[width=0.85\textwidth]{Images/rerko_manu.jpeg}
+    \caption[Dongba Manuscript from Rerko Region]{"Ancestor-worshiping scripture of Rerko branch" by Dongba Yang Zhashi, Youmi Village, Labo \cite{yang_study_2024}.}
+    \label{fig:rerko}
+\end{figure}
+
+\begin{figure}[H] 
+    \centering
+    \includegraphics[width=0.85\textwidth]{Images/ludian_manu.jpg}
+    \caption[Dongba Manuscript from Ludian Region]{"Ancestor-worshiping scripture" by Dongba He Shijun, Xinzhu Village, Ludian \cite{yang_study_2024}.}
+    \label{fig:ludian}
+\end{figure}
+
+Within the possibility that the Dongba written tradition was developed into a full-fledged script post-southwards-migration, pictographic influence from early civilizations may still have influenced the Naxi people not only at a time prior but also at any position from the Yellow River basin to along the TYC—which, despite having a distinct geographic locale, is first and foremost a heritage route. The name of the Dongba script in the Naxi language is \textit{ser jel lv jel [sɿ˧ tc ¸ɤ˥ lv ̩ ˧ tc¸ɤ˥ ]}, literally meaning "records made on wood and stone" \cite{poupard_writings_2021}; we can infer the earliest form of these glyphs were not full-fledged manuscripts but rather simple carvings in caves or trees that were later complicated. Arguments for shared influence on the pictorial history of the corridor are found in the first Ba-Shu scripts of early polities in modern Sichuan and isolated works of pre-Buddhist rock art on the Tibetan Plateau (Appendix \ref{app: rock-art}), artistically and semantically similar to the Dongba pictograms. 
+
+The Dongba script was initially developed for use by Naxi priests, aptly called Dongbas, in recording divination scripture—originally, these priests were practitioners of the Tibetan Bön religion. Other peoples of the TYC, like the Yi, also have similar priestly traditions as a marker of their shared origin; however, only the Naxi developed and preserved this manner of pictographic script. Its primary use in antiquity was for manuscripts recording stories of Naxi history and mythology, although this has become generalized over time due to post-20th-century revitalization efforts. Despite consisting of relatively complex pictographs, these symbols have always denoted sound—even in times when usage was limited to divination and priestly work.
+
+\subsection{The Yi}
+\noindent\hspace{1cm}
+The Yi people (self-named Nuosu in the Liangshan region) are one of the largest ethnic minorities of Southwest China, with a population of about 9–10 million spread across Yunnan, Sichuan, Guizhou, and Guangxi provinces \cite{frechette_ways_2003}. Dwelling in the highlands of the TYC, a hallmark of their distinct culture is their ancient written script, recorded by Yi priests called bimo (comparable to Naxi dongba). Used at least since the 15th century, the original script consisted of thousands of logographic symbols. Over time, many regional variants emerged, as different Yi areas often had their own glyph forms; scholars have documented as many as 8,000–10,000 characters in old manuscripts (with perhaps 90,000 variants). These texts include scriptures, chronicles, and genealogical records that encode the Yi's collective memory. Notably, Yi classical literature does not track Chinese dynastic history but follows its own historical lineage; Yi classical records recount the deeds of ancestors and migrations in a framework independent of Han Chinese historiography \cite{li_building_2017}. In the 1970s, as part of cultural preservation efforts, the Chinese government worked with Yi scholars to standardize the script. A Modern Yi script was introduced in 1974 (based on the Liangshan dialect) with 756 standardized characters, replacing the multitude of classical forms for official use. 
+
+Ethnologists like Gao Zhiying have specifically examined Tibetan and Naxi cultural influences in the western part of the TYC, reflecting how the concept of the corridor has been used to understand inter-ethnic relationships \cite{he_gao_2017}. Naxi legends and Yi legends sometimes reference similar themes (e.g. flood myths, ancestral heroes), hinting at ancient connections or shared narratives in this mountain world. Additionally, genetic studies of various TYC populations (including Yi, Naxi, Hani, and others) have revealed complex admixture and reinforced that the corridor has historically facilitated ethnic flows and diversification rather than social isolation \cite{zhang_tibetan-yi_2022}. The Yi people's identity has been shaped not only by their internal traditions but also by this "corridor context"—a melting pot of Tibeto-Burman cultures.
+
+\subsection{Sanxingdui and the Ba-Shu Pictographs}
+\noindent\hspace{1cm}
+The Sanxingdui (and Jinsha) civilization refers to a Bronze Age culture that flourished in the Sichuan Basin of Southwest China and is associated with the ancient Shu Kingdom. Centered near modern Guanghan, 40 km northeast of Chengdu, the Sanxingdui site spans roughly 12 square kilometers and dates from around 2700 BCE to 1000 BCE \cite{li_new_2023}. Despite its long duration, this culture was unknown to recorded history until archaeological discoveries in the 20th century revealed its remains. The breakthrough discovery occurred in 1986, when archaeologists excavated two sacrificial pits at Sanxingdui. These pits yielded an astonishing trove of over 900 artifacts, including large bronzes, gold objects, jade carvings, and elephant tusks. The finds and material culture were unlike anything previously seen in Chinese archaeology, suggesting a complex civilization entirely separate to Shang China. While Sanxingdui revealed no written language, eight inscribed symbols were noted \cite{sanxingdui_museum_sanxingdui_2023}.
+
+Colloquially, the Ba-Shu scripts refer to three undeciphered scripts used in the Ba and Shu kingdoms—the presumed descendants of the Sanxingdui and Jinsha civilizations—in the 4th and 5th century BC \cite{sage_ancient_1992}. The first is a pictographic script used to decorate bronze weapons found in Ba graves, of which nearly 200 individual symbols have been discovered. The later two, interestingly, draw similarities to the later Yi script, and have been understood as potential predecessors.
+
+In the context of the broader TYC, the southward migrations of the surviving Shu people following their defeat by the Qin in 316 AD was the final edition of the mass southwards migration of Tibetan-Burman that defined early demic flow in the TYC \cite{shi_south-western_2011}. Han, Wei, and Jin dynasty records prove that in the following years, the "Yi" barbarian names are all connected to the Shu, who integrated into the Yi upon leaving their original locale. Seeing as the TYC was a natural evacuation route, we can assume the Ba-Shu cultures were privy to non-demic transmission along the corridor as well.
+
+\section{Pictorial Parallels}
+\noindent\hspace{1cm}
+We have noted a few preliminary similarities in qualitative visual analysis of the Indus script and the Naxi Dongba script, augmented by brief notation of connections to the Ba-Shu pictographs (and by extension, the Yi script). Through our study, we specifically examine fundamental iconographic motifs and concepts less likely to be lost or misconstrued across a large spatial and temporal gap, as exists between the IVC and the TYC.
+
+The Indus script is less literal in its representations than the Dongba script. While the Dongba script has discrete pictography and only started being rearranged for phonetic usage later in its lifespan, the Indus script contains more abstract modifiers and signs that cannot be understood intuitively. It is not a primitive system and was in use for at least 700 years, over 1.2 million square kilometers. The Naxi language is also firmly within the Sino-Tibetan language family and bears no similarities to Indo-European or Dravidian languages—we do not argue any phonetic connection. Nor do we claim the Dongba script is a direct descendant of the Indus, as it lacks far too many of the Indus script's modifiers and basic mechanisms to make such a connection. However, the transmission of arts and technologies—like writing—travel in unique ways, and we maintain that the iconography of the IVC in some way, shape, or form made contact with the TYC, as detailed below.
+
+\subsection{Numerals}
+\noindent\hspace{1cm}
+The original hypothesis inspiring this paper stems from an observation of the similarities between the assumed number system of the IVC and the numerals of the Naxi Dongba script. Standardized weights prove the Harappans had, at least, a concept of enumeration and mathematics long before the first previously known appearance of arithmetic in the ancient world. Measurement tools have been unearthed at IVC sites, revealing that the Indus "inch" was precisely double the Sumerian sushi, possibly to simplify conversion during commerce or mark a common origin \cite{singh_early_2019}. Harappans, distinguishable by their multi-story brick architecture, crafted blocks with remarkable uniform precision using optimal geometrical ratios, proving they had advanced knowledge of angles and proportions prior to the theorems of Pythagoras \cite{ghanta_overview_2020, khan_bricks_2013}. 
+
+It is a common assumption that the stroke signs, as seen in Figure \ref{fig:strokes}, in the Indus script represent numerals, as they often do in other systems \cite{parpola_deciphering_1994, korvink_indus_2011, wells_epigraphic_2011}. As far back as 3500 BC, the pre-Harappans represented numbers in their inscribed works, starting with a system of one to 13 vertical strokes \cite{ghanta_overview_2020}.
+
+\begin{figure}[H] 
+    \centering
+    \includegraphics[width=0.9\textwidth]{Images/Fuls.pdf}
+    \caption [Indus Stroke Signs]{Indus stroke signs and frequencies, as documented in the Interactive Corpus of Indus Text (ICIT) \cite{fuls_ancient_2020, wells_interactive_2024}.}
+    \label{fig:strokes}
+\end{figure}
+
+By 2500 BC, the Indus script had switched to an abridged system, though we do not know for sure the base or even whether they used more than one. Some suggest an octal system, based on a semantically related reconstructed Dravidian root connecting "8" with "to count/number," as well as there being a maximum of 7 short strokes at any one point \cite{fuls_ancient_2020, mcalpin_toward_1974, fairservis_harappan_1992}. Others suggest a base-10 decimal system as the maximum stroke count expands to 9 when we consider long strokes as well \cite{wells_epigraphic_2011}; a substantial piece of evidence for the decimal system is a fragmented length measure from Mohenjodaro, subdivided into 10 units (Appendix \ref{app: scale}) \cite{guha_history_2022, mackay_household_1938}. Indus numeral notation appears to be relatively complex, as evidenced by recurring sign pairings that suggest non-numerical meaning, variations in stroke length, and positional relationships that indicate value significance \cite{fuls_ancient_2020}. 
+
+Pictorially, the strokes are reminiscent of the counting systems of Sumer and Elam (Figure \ref{fig:base-60}). However, the Mesopotamian and Elamite counting systems are sexagesimal (base-60, or perhaps base-10 mod 60) \cite{friberg_numbers_1984, friberg_three_2019}, and operate differently from a traditional base-10 counting system. If the Harappans had used base-10, cooperation with Sumer and Elam would have been notably streamlined, whereas an octal system would have required regular conversion. It remains possible the IVC used both base-8 and base-10 systems, similar to the dual usage of base-60 and base-10 in Mesopotamia and Elam.
+
+\begin{figure}[H] 
+    \centering
+    \includegraphics[width=0.7\textwidth]{Images/Kean.pdf}
+    \caption[Cuneiform Base-60 Numerals]{Cuneiform base-60 numerals up to 59. Each triangle represents a clay wedge impression \cite{chew_base_2019}.}
+    \label{fig:base-60}
+\end{figure}
+
+Dongba numerals are represented in small strokes in the same style as the civilizations to the West and are explicitly base-10. Despite this tally system being arguable as an intuitive way to record numbers, the Bronze Age civilization(s) to the east of the TYC adhered to entirely separate conventions in their numeral systems. The earliest Chinese numerals were tallied horizontally for the first four numerals and then had unique forms to represent values from five onwards (Figure \ref{fig:chinese_num}). Other groups in the TYC that developed a script, like the Yi, did not develop independent numerals and borrowed the Chinese system when necessary.
+
+\begin{figure}[H] 
+    \centering
+    \includegraphics[width=0.6\textwidth]{Images/7-Figure9-1.png}
+    \caption[Shang Dynasty Chinese Numerals]{Archaic Chinese numerals during the Shang Dynasty, beginning with horizontal counters \cite{pande_numeral_2010}.}
+    \label{fig:chinese_num}
+\end{figure}
+
+Stylistically, Dongba strokes are not wedges (like cuneiform) or dots (like Mayan glyphs), but straight strokes such as seen in the IVC—this mostly has to do with the materials on which these scripts were traditionally written, as West Asia often carved and impressed into softer clay while the IVC and the Naxi carved in harder stone and wood that would inhibit wedges. In later manuscripts and the standardized font used by the Chinese government in the city of Lijiang, the strokes have a Chinese \textit{gōu} (钩) appended at the end of each stroke, perhaps due to an intentional Sinicization of the script. This feature is not present in older-style manuscripts (Figure \ref{fig:rerko}, \ref{fig:dongba_num}) in which the strokes resemble those of the Indus script. There remains a possibility of independent origination, but the uncanny structural and visual similarities of Dongba numerals to older writing systems support our hypothesis of the IVC or West Asia being a stylistic source.
+
+\begin{figure}[H] 
+    \centering
+    \includegraphics[width=0.6\textwidth]{Visualizations/Figures/Dongba_Numerals.pdf}
+    \caption[Indus vs. Dongba Numeral Comparison Chart]{A comparative illustration of stroke patterns in the Indus script alongside early and contemporary Dongba numeral systems.}
+    \label{fig:dongba_num}
+\end{figure}
+
+\subsection{Gender Markers}
+\noindent\hspace{1cm}
+The second preliminary finding guiding my hypothesis is similarities in theorized gender symbols across the Indus and Dongba scripts, based on Mahadevan's final interpretation of the Indus jar and arrow signs \cite{mahadevan_dravidian_2014,mahadevan_indus_2011,mahadevan_interpreting_2015}, two of the most frequently appearing signs in the Indus signary. 
+
+\begin{figure}[H] 
+    \centering
+    \includegraphics[width=0.6\textwidth]{Visualizations/Figures/Gender.pdf}
+    \caption[Indus vs. Dongba Gender Marker Comparison Chart]{Dongba gender modal particles, Indus jar and arrow symbols, and additional similar Sanxingdui/Ba-Shu pictographs.}
+    \label{fig:gender}
+\end{figure}
+
+Across all 2,290 artifacts, these signs have never appeared as a pair despite appearing relatively often in inscriptions; in fact, the jar is the most frequent sign by far. In 2011, Mahadevan, who wavered on his interpretation of these signs often, deemed this mutual exclusivity as indicative of gender markership \cite{mahadevan_indus_2011}. In adherence to the Proto-Dravidian hypothesis, he connected via rebus the arrow sign (\textit{ampu}) and the Old Telugu suffix \textit{-(a)mbu} \cite{sastri_historical_1969}, deeming the Indus arrow the non-masculine singular suffix. Naturally, its counterpart, the jar, falls as the masculine suffix. The phallic shape of the jar and, more distantly, the triangular shape of the arrow mirror equivalent iconography in the Dongba script (Figure \ref{fig:gender}, in which gender signs are typically used as non-verbalized modal particles. It is worth noting similarly shaped symbols also appear in Ba-Shu pictography.
+
+\subsection{Other Similarities}
+\noindent\hspace{1cm}
+There are a few other iconographic similarities worth looking into. One is the Naxi sky character (see Figure \ref{fig:sky}), not traditionally used alone but rather as a modifier on top of another symbol. The Indus roof character functions quite similarly, often placed above the common "fish" and other symbols. The Ba-Shu corpus seems to have similar characters as well, although we cannot confidently attest to their function.
+
+\begin{figure}[H] 
+    \centering
+    \includegraphics[width=0.6\textwidth]{Visualizations/Figures/Sky.pdf}
+    \caption[Indus vs. Dongba Sky Symbol Comparison Chart]{The Dongba sky modifier, the Indus roof symbol, and a related Ba-Shu pictograph.}
+    \label{fig:sky}
+\end{figure}
+
+We will also consider the Dongba symbol for fire, identical to an Indus and a Ba-Shu sign (Figure \ref{fig:fire}). This is not proof in and of itself, as many ancient civilizations retained the same rudimentary sign. Both the oracle bone script (甲骨文) of the Han Chinese and the scripts of civilizations to the West connected this sign to hills or mountains, and scholars have assumed the same for the Indus script thus far \cite{parpola_deciphering_1994}, \cite{mahadevan_akam_2010}. The Dongba script uniquely considers the triple triangle sign to mean fire.
+
+\begin{figure}[H] 
+    \centering
+    \includegraphics[width=0.6\textwidth]{Visualizations/Figures/Fire.pdf}
+    \caption[Indus vs. Dongba Fire \& Smoke Comparison Chart]{The Dongba fire symbol alongside the three-triangle motifs present in both Indus and Ba-Shu scripts.}
+    \label{fig:fire}
+\end{figure}
+
+Our argument lies in the modified Dongba symbol for "smoke." It depicts a line extended from each of the triple peaks, zigzagged in modern writing but often a straight stroke in older manuscripts. This same variation exists in the Indus corpus—and would not make as much sense if referring to a mountain. This is not to say the mountain interpretation is wholly incorrect, as the Indus script is not ideographic and individual symbols often refer to separate, abstract meanings. Yet, given the pictorial closeness, this connection is worth considering.
+
+\begin{figure}[H] 
+    \centering
+    \includegraphics[width=0.9\textwidth]{Visualizations/Figures/Similarities.pdf}
+    \caption[Additional IVC-TYC Sign Comparison Chart]{Further comparisons highlighting similarities between TYC and Indus script signs.}
+    \label{fig:sim}
+\end{figure}
+
+As shown in Figure \ref{fig:sim}, there are other signs with visual similarity at first glance, though this list is not exhaustive.
+
+
+\section{Routing Transmission}
+\noindent\hspace{1cm}
+There is sound evidence for intraconnection within the corridor \cite{yao_genetic_2017, shi_ethnic_2018}; yet, in order to convincingly argue transmission from the IVC to the TYC, we must establish plausibility in spanning such a gap in space and time. Evidence via radiocarbon dating leads us to consider the ancient Shu-Shendu road (Figure \ref{fig:shu-shendu}, connecting Northeastern India to the Hengduan Mountains of the TYC. Future expansions of this route during the Tang and Yuan dynasties extend it to the base of the Himalayas, where we know the Indus Valley people migrated towards following the civilization's fall \cite{khan_bricks_2013, law_building_2007}.  
+
+\begin{figure}[H] 
+    \centering
+    \includegraphics[width=1\textwidth]{Images/Shu-Shendu.pdf}
+    \caption[Shu-Shendu Road Contextual Map]{Map depicting material culture exchange and transmission routes between the TYC region and South Asia during the period 4050–2050 BC (6000–4000 BP) \cite{ma_understanding_2023}.}
+    \label{fig:shu-shendu}
+\end{figure}
+
+It is possible transmission may have occurred during the second millennium BC, when the IVC cities were abandoned and cultural exchange between China and South Asia significantly intensified along the trans-Hengduan mountain routes \cite{ma_understanding_2023}. Studies have proven that this route, also sometimes called the Southwestern or Southern Silk Road, was a major transmission route for millet cultivation from the Indus Valley into China beginning as early as the third millennium BCE \cite{jacques_linguistic_2024}. The discovery of cowrie shells from the Indian Ocean at sites in Southwestern China, along with perforated stone knives of Northern Chinese origin in the Swat Valley and Kashmir\footnote{We note that at the time of the IVC, Kashmir and the Swat Valley remained Neolithic despite being within close geographic proximity to the urban Harappan society \cite{betts_northern_2019}.}, demonstrates robust bi-directional cultural transmission \cite{gao_new_2021}. Other valued commodities, such as ivory (found at Sanxingdui and Jinsha sites), traveled via merchant intermediaries through the Lancang, Jinsha, and Nujiang valleys, forming natural corridors through the challenging Hengduan terrain and facilitating intellectual movement. Additionally, hybridization between japonica and indica rice varieties in South Asia after 2050 BC provides further evidence of sustained contact networks through which culture and iconography could have disseminated, influencing indigenous symbolic patterns along these highland routes \cite{fuller_consilience_2010}. All matters considered, the point stands that, albeit somewhat unexplored, multidisciplinary evidence supports plausible linkage between the period and locale of the Indus Valley and the early heritage of the Tibeto-Burman people.
+
+\chapter{Methodology}
+\label{material-and-methods}
+\section{Dataset Composition}
+\noindent\hspace{1cm}
+The dataset for this study includes three target ancient scripts and three comparison datasets, with a focus on visual structure (for complete documentation of our data acquisition, see Appendix \ref{app: data-acq}). The target scripts are the Indus Valley script, Proto-Cuneiform, and Proto-Elamite, representing possible originations for influence on the TYC. For comparison, we collected datasets of the Naxi Dongba script as well as from the broader TYC region—specifically, one set of older Naxi Dongba pictographs, another of a more modern Naxi Dongba standardization\footnote{Modern standardized Dongba is Sinicized and formed of Chinese-like strokes. It was easier to find a complete modern Dongba dataset, but to properly contextualize our study, we also test a less comprehensive secondary Dongba dataset sourced from old-style Naxi manuscripts.}, and a set consisting of ancient TYC scripts. The TYC comparison set was constructed with equal proportions of its constituent scripts, combining historical Naxi, Ba-Shu/Sanxingdui symbols, and handwritten Classical Yi\footnote{It is an interesting note that the standardized Modern Yi, at first glance, shares more visual similarities to the Indus script in its angularity; stylized handwriting is slightly more stroke-like and rounded. Nonetheless, to maintain data integrity, we proceeded with Classical Yi in its older form.}) via augmentation to ensure a balanced representation. This enables a controlled comparison to see if TYC-region scripts share more visual commonalities with Indus script than the West Asian tradition. We did not filter for frequency—hapax legomena or rare occurring glyphs are frequent in low-resource ancient data and do not stray from cumulative stylistic tradition \cite{parpola_deciphering_1994, fuls_ancient_2020}.
+
+\section{Data Preprocessing}
+\noindent\hspace{1cm}
+All script images underwent uniform preprocessing to facilitate joint training. We standardized the image resolution across datasets to a fixed size of 224$\times$224 pixels—the default input size for both the Swin Transformer and ResNet models we used—padding or scaling images as needed while preserving aspect ratio. This was implemented using a custom \texttt{SquarePad} transform followed by a standard resize operation. Resolution normalization ensured that differences in image size or scale do not bias the model. 
+
+Images were converted to consistent grayscale intensity since color information was not relevant to the structural qualities of each glyph. We applied intensity normalization through PyTorch's standard normalization transform (mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]) to account for varying lighting or contrast in source photographs. 
+
+Only the historical Dongba data was denoised as it was retrieved directly from manuscript scans, while the other datasets came preprocessed. The denoising process involved converting color images to grayscale, applying adaptive thresholding (\texttt{ADAPTIVE\_THRESH\_GAUSSIAN\_C}) for binarization, performing morphological closing operations with a 2$\times$2 kernel to reduce noise, and applying Non-Local Means denoising (\texttt{fastNlMeansDenoising}) with parameters optimized for manuscript clarity. This preprocessing approach follows established practices in computer-vision-assisted paleography \cite{daggumati_convolutional_2023}.
+
+\paragraph{Augmentation techniques}Given the limited scope of our corpus, we employed extensive data augmentation to expand the effective dataset size and, ergo, increase variability and model robustness in accordance with published literature employing similar applications. Our \texttt{AugmentationPipeline} class applied multiple transformations while preserving essential glyph characteristics:
+
+\begin{enumerate}
+    \item \textbf{Geometric transformations:} Random rotations (±45°) \cite{krizhevsky_imagenet_2017}, scaling (0.85-1.15x) \cite{simard_best_2003}, translations (±10\% of dimensions) \cite{hutchison_evaluation_2010}, slight affine transformations \cite{perez_effectiveness_2017}, and elastic deformations that simulate material warping while maintaining glyph identity \cite{simard_best_2003}.
+    \item \textbf{Visual quality variations:} Brightness and contrast adjustments (0.7-1.5x range) \cite{simard_best_2003}, sharpness modifications (0.7-1.6x) \cite{simard_best_2003}, Gaussian blur (radius 0.5-1.2) \cite{simard_best_2003}, and multiple noise types (random, speckle) to simulate aging effects and digitization artifacts \cite{hutchison_evaluation_2010}.
+    \item \textbf{Background modifications:} Custom texture additions and color jittering to mimic tablet surface variations and preservation conditions \cite{simard_best_2003} \cite{krizhevsky_imagenet_2017}.
+\end{enumerate}
+
+
+The pipeline combined these transformations into strategic combinations (e.g., rotation+brightness+noise, elastic transform+contrast) to maximize diversity while ensuring the essential structural features of each script remained intact. For the three target scripts (Indus, Proto-Cuneiform, and Proto-Elamite), we generated four augmented variations per original image, expanding our effective dataset by 5$\times$. Each augmentation was applied through an \texttt{AugmentedScriptDataset} class that generated variations on-the-fly during training, ensuring optimization of both storage and computational resources. 
+
+\newpage
+\section{Model Architecture}
+\noindent\hspace{1cm}
+\begin{figure}[H]  
+    \centering  
+    \includegraphics[width=0.8\linewidth]{Visualizations/Figures/Architecture.pdf}
+    \caption[Hybrid Model Architecture Schematic]{Overview of the ResNet-18-Swin Transformer hybrid model architecture.}
+    \label{fig:architecture}
+\end{figure}
+
+After preliminary experiments with Swin Transformer-only architectures (following past successful applications in Dongba glyph retrieval \cite{ma_stef_2024}), we observed limitations in capturing fine-grained details across multiple signaries critical for ancient script comparison that resulted in feature collapse. This led us to develop our own novel hybrid CNN-Transformer architecture, optimized via self-supervised contrastive learning with custom weighting parameters, combining complementary strengths: ResNet-18 for local feature extraction and Swin Transformer \cite{liu_swin_2021} for capturing long-range dependencies.
+
+\subsection{CNN (ResNet-18) component}
+\noindent\hspace{1cm}
+Neural networks are computational systems inspired by biological brains, consisting of interconnected artificial neurons that process input data through multiple layers to produce desired outputs. These systems learn patterns from data through iterative weight adjustments, enabling them to perform complex tasks without explicit programming. Convolutional Neural Networks (CNNs), in specific, are specialized neural network architectures designed to process grid-like data, particularly images, and map them to numerical embeddings. The fundamental operation in CNNs is the convolution, which applies the following equation filter upon the input to detect spatial patterns:
+
+\begin{equation}
+(f * g)(x,y) = \sum_{i=-a}^{a} \sum_{j=-b}^{b} f(i,j) \cdot g(x-i, y-j)
+\end{equation}
+
+Where $f$ represents the input feature map, $g$ is the kernel (or filter), and $(x,y)$ denotes spatial coordinates. This enables CNNs to capture local patterns while still maintaining translation invariance, critical in image recognition.
+
+The CNN pathway in our hybrid model employs a ResNet-18 backbone \cite{he_deep_2015} to extract hierarchical visual features from input images. ResNet architectures revolutionized deep learning by introducing residual connections to help mitigate the vanishing gradient problem in deep networks. Beginning with a 7$\times$7 convolutional layer (64 filters, stride 2) followed by max-pooling, the architecture continues with four sequential stages containing residual blocks with increasing filter dimensions (64, 128, 256, 512). Each stage comprises two residual blocks with dual 3$\times$3 convolutional layers, batch normalization, and ReLU activation. The residual connections follow the formulation:
+
+\begin{equation}
+y = \mathcal{F}(x, \{W_i\}) + x
+\end{equation}
+
+where $\mathcal{F}$ represents the residual mapping to be learned and $x$ is the identity input. This shortcut connection allows gradients to flow directly through the network and enables the training of deeper architectures. Each convolutional layer in a residual block can be expressed as:
+
+\begin{equation}
+z^{(l+1)} = \sigma\left(\text{BN}\left(W^{(l)} \ast z^{(l)} + b^{(l)}\right)\right)
+\end{equation}
+
+where $\ast$ denotes the convolution operation, $\sigma$ is the ReLU activation function defined as $\sigma(x) = \max(0,x)$, and BN represents batch normalization. The CNN pipeline concludes with global average pooling, producing a 512-dimensional feature vector representing the input glyph.
+
+\subsection{Transformer (Swin) Component}
+\noindent\hspace{1cm}
+Transformers are another neural network architecture that revolutionized sequence modeling by simplifying transduction down to only attention, rather than recurrence or convolution \cite{vaswani_attention_2023}. Following the publication of this 2017 landmark paper, this methodology enabled models to directly relate different positions in a sequence. The following attention function is the core mechanism, which computes weighted sums of input features:
+
+\begin{equation}
+\text{Attention}(Q, K, V) = \text{SoftMax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V
+\end{equation}
+
+Where $Q$ (query), $K$ (key), and $V$ (value) are learned linear transformations of the input, and $d_k$ is the dimensionality of the key vectors, serving as a scaling factor to prevent excessive magnitudes in the dot product.
+
+Operating in parallel to our CNN, the Swin Transformer backbone \cite{liu_swin_2021} extends this concept through hierarchical vision processing with localized shifting self-attention windows. 
+
+ \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{Images/swin_transformer_architecture (1).png}
+    \caption [Swin Transformer vs. Traditional Transformer]{Swin Transformer creates hierarchical features by merging patches, enabling both classification and dense prediction tasks while achieving linear complexity \(O(N)\) through windowed self-attention, unlike traditional Transformers' quadratic \(O(N^2)\) global attention \cite{liu_swin_2021}.}
+    \label{fig:swin}
+\end{figure}
+
+Unlike the original Transformer which computes attention globally, Swin Transformer computes attention within local windows, making it more efficient for visual data. The multi-head self-attention mechanism in each Swin Transformer block is formulated as:
+
+\begin{equation}
+\text{MHSA}(Q, K, V) = \text{Concat}(\text{head}_1, \text{head}_2, \ldots, \text{head}_h)W^O
+\end{equation}
+
+where each attention head is computed as:
+
+\begin{equation}
+\text{head}_i = \text{Attention}(QW^Q_i, KW^K_i, VW^V_i)
+\end{equation}
+
+\begin{equation}
+\text{Attention}(Q, K, V) = \text{SoftMax}\left(\frac{QK^T}{\sqrt{d_k}} + B\right)V
+\end{equation}
+
+$Q$, $K$, and $V$ are query, key and value matrices, $d_k$ is the feature dimension, and $B$ is the relative position bias. The position bias term is parameterized as:
+
+\begin{equation}
+B_{i,j} = B'_{\hat{p}_x, \hat{p}_y}
+\end{equation}
+
+where $\hat{p}_x = p_x + M - 1$ and $\hat{p}_y = p_y + M - 1$ are the normalized relative coordinates, and $B'$ is a learnable bias matrix.
+
+The Swin-Base architecture comprises four stages with increasing dimensionality: Stage 1 (128-dimension, 2 blocks, 4 attention heads), Stage 2 (256-dimension, 2 blocks, 8 heads), Stage 3 (512-dimension, 18 blocks, 16 heads), and Stage 4 (1024-dimension, 2 blocks, 32 heads). Between stages, patch merging layers reduce spatial resolution while increasing feature dimensions. The model employs shifted window self-attention ($7 \times 7$ window size), restricting attention within non-overlapping windows in one layer and shifting window configuration in the next, enabling efficient computation with global connectivity. This pathway outputs a 1024-dimensional feature representation complementary to the CNN features.
+
+\subsection{Feature Fusion}
+\noindent\hspace{1cm}
+After the CNN and Transformer components process an image in parallel, we obtain two feature vectors: a 512-d CNN-based feature and a 1024-d Transformer-based feature. These two representations are concatenated to form a combined 1536-dimensional embedding, which is then processed through a projection head:
+
+\begin{equation}
+h = \text{Dropout}_{0.1}(\text{ReLU}(\text{BN}(W_1 z + b_1)))
+\end{equation}
+\begin{equation}
+g = \text{BN}(W_2 h + b_2)
+\end{equation}
+
+Where $z$ is the concatenated feature vector, $W_1 \in \mathbb{R}^{1024 \times 1536}$, $W_2 \in \mathbb{R}^{256 \times 1024}$, $b_1 \in \mathbb{R}^{1024}$, $b_2 \in \mathbb{R}^{256}$ are learnable parameters, BN represents batch normalization with a momentum of 0.01, and Dropout$_{0.1}$ applies dropout regularization with probability 0.1.
+
+We refer to ablation studies conducted by Guo et al. \cite{guo_cmt_2022} in assessing the value of a hybrid model rather than one or the other; frankly, it seems counterintuitive to reintroduce convolution into a technology novel for doing away with it. Yet, by leveraging both types of features, the model can recognize subtle shape details and broader structural relationships, which is critical for comparing scripts that might share high-level stylistic traits despite different low-level details. This hybrid approach provides advantages over either independent architecture by capturing both detailed stroke patterns (CNN) and global structural relationships (Transformer) critical for ancient script comparison \cite{guo_cmt_2022, bennour_heritagescript_2024, abimouloud_vision_2024}.
+
+\section{Ensemble Modeling}
+\noindent\hspace{1cm}
+To mitigate false positives and boost the reliability of our findings, we implemented ensemble modeling based on principles from Lakshminarayanan et al. \cite{lakshminarayanan_simple_2016}, while adapting their approach to our specific context of ancient script analysis. Ensemble variance reduction—the statistical principle of combining multiple models to decrease prediction variability—forms the theoretical foundation of our methodology. Our specific implementation involved training five independent instances of our hybrid CNN-Transformer model for each target script analysis (Indus, Proto-Cuneiform, Proto-Elamite), totaling 15 models organized as three ensembles (one per target script). Each model in an ensemble was initialized with different random weights and trained from scratch using identical training protocols and data, a setup we designed specifically for our research questions about ancient script relationships between systems with established visual closeness\cite{daggumati_data_2018}.
+
+\begin{table}[H]
+    \centering
+    \caption{Ensemble Training Data Summary}
+    \label{tab:summary}
+    \begin{tabular}{|l|l|l|l|l|}
+    \hline
+        \textbf{model\_idx} & \textbf{seed} & \textbf{val\_loss} & \textbf{epoch} & \textbf{model\_path} \\ \hline
+        1 & 42 & 8.801242896488730 & 11 & Proto-Cuneiform\_ensemble \\ \hline
+        2 & 43 & 8.71736410685948 & 11 & Proto-Cuneiform\_ensemble \\ \hline
+        3 & 44 & 8.819251537323000 & 7 & Proto-Cuneiform\_ensemble \\ \hline
+        4 & 45 & 8.773778438568120 & 9 & Proto-Cuneiform\_ensemble \\ \hline
+        5 & 46 & 9.27264860698155 & 1 & Proto-Cuneiform\_ensemble \\ \hline
+        1 & 42 & 9.65621223449707 & 3 & Indus\_ensemble \\ \hline
+        2 & 43 & 9.49264907836914 & 1 & Indus\_ensemble \\ \hline
+        3 & 44 & 9.3032808303833 & 11 & Indus\_ensemble \\ \hline
+        4 & 45 & 9.921699905395510 & 1 & Indus\_ensemble \\ \hline
+        5 & 46 & 10.057604217529300 & 1 & Indus\_ensemble \\ \hline
+        1 & 42 & 9.465515518188480 & 13 & Proto-Elamite\_ensemble \\ \hline
+        2 & 43 & 10.229036331176800 & 5 & Proto-Elamite\_ensemble \\ \hline
+        3 & 44 & 9.9594895362854 & 1 & Proto-Elamite\_ensemble \\ \hline
+        4 & 45 & 9.304905700683590 & 12 & Proto-Elamite\_ensemble \\ \hline
+        5 & 46 & 9.408125591278080 & 11 & Proto-Elamite\_ensemble \\ \hline
+    \end{tabular}
+\end{table}
+
+All models were trained for up to 20 epochs with an early stopping criterion to prevent overfitting. Early stopping monitored the model's performance on a validation split, and training was stopped if no improvement was seen for five epochs. Because each ensemble member had a random initialization and mini-batch order, they each learned somewhat different feature nuances, even though they saw the same overall training data.
+
+During inference, embeddings from all five models in an ensemble were averaged to produce a consensus representation for each glyph. The diversity among ensemble members allows the ensemble to act like a decision-making committee, offering individual perspectives and mitigating biases, leading to a more robust overall representation \cite{lakshminarayanan_simple_2016}. We found that ensemble embeddings had lower variance and improved generalization in downstream evaluations compared to any single model, consistent with ensemble theory. Additionally, using multiple models reduces the chance of missing a true pattern: if one model converges to a poor local optimum (where meaningful similarities are not well captured), the others likely will not, and the averaging will down-weight such failures. This was crucial for reliably detecting subtle script relationships.
+
+\section{Training Objective and Implementation}
+\noindent\hspace{1cm}
+We formulated the training objective as a self-supervised contrastive learning problem to learn an embedding space where visually similar glyphs are close together. This was accomplished via an enhanced version of the NT-Xent (Normalized Temperature-Scaled Cross-Entropy) contrastive loss \cite{chen_simple_2020} with a temperature parameter of 0.1:
+
+\begin{equation}
+\mathcal{L} = -\log\frac{\exp(\text{sim}(z_i, z_j)/\tau)}{\sum_{k=1}^{2N} \mathbb{1}_{[k \neq i]} \exp(\text{sim}(z_i, z_k)/\tau)} + \mathcal{L}_{\text{var}} + 0.1 \cdot \mathcal{L}_{\text{unif}}
+\end{equation}
+
+Where $\text{sim}(z_i, z_j) = \frac{z_i^T z_j}{||z_i|| \cdot ||z_j||}$ is the cosine similarity between normalized embeddings, $\tau$ is the temperature parameter, $\mathbb{1}_{[k \neq i]}$ is an indicator function evaluating to 1 when $k \neq i$, and $N$ is the batch size.
+
+Beyond the standard contrastive term, we incorporated two regularization terms: a variance term that prevents feature collapse and a uniformity term that promotes even distribution of embeddings on the hypersphere:
+
+\begin{equation}
+\mathcal{L}_{\text{var}} = \frac{\lambda_{\text{reg}}}{\text{Var}[\mathbf{z}] + \epsilon}
+\end{equation}
+
+\begin{equation}
+\mathcal{L}_{\text{unif}} = \log\mathbb{E}_{x,y \sim p_\text{data}}\left[ e^{-2||f(x) - f(y)||^2} \right]
+\end{equation}
+
+where $\text{Var}[\mathbf{z}]$ represents the feature variance calculated as the mean squared distance of representations from their mean, $\lambda_{\text{reg}}$ is a regularization coefficient, $\epsilon$ is a small constant ($10^{-4}$) to prevent division by zero, and $f(x)$ and $f(y)$ are normalized embeddings of randomly sampled data points. 
+
+In each training batch, augmented versions of the same glyph served as positive pairs, and other glyphs from the same script within the batch functioned as negative pairs, allowing the model to learn meaningful representations of each script's internal visual structure. We used the AdamW optimizer with decoupled weight decay and a learning rate of $3 \times 10^{-5}$ with a cosine decay schedule that included a 10\% warmup period. This relatively conservative learning rate was chosen after careful experimentation, as higher values could cause training instability when jointly optimizing the CNN and transformer components.
+
+\subsection{Computational Implementation}
+\noindent\hspace{1cm}
+All 15 of our models were trained on an NVIDIA A100 GPU accelerator (40 GB VRAM) accessed through Google Colab's premium subscription services and implemented in Python using PyTorch (Appendix \ref{app: packages}). This process presented several engineering challenges due to the complexity of our hybrid architecture; the Swin Transformer component in particular was highly demanding, as it consists of approximately 327 distinct layers/parameters and tens of millions of parameters total—making training both time-consuming and memory-intensive.
+
+To address these computational constraints, we employed several optimization techniques:
+
+\begin{enumerate}
+    \item \textbf{Mixed precision training:} To optimize computational efficiency, we implemented PyTorch's \texttt{amp} (Automatic Mixed Precision) API (Appendix \ref{app: packages}). This technique is incorporated in our training loop through \texttt{torch.amp.autocast()} and \texttt{GradScaler} in our \texttt{SCRIBE} class, and can be mathematically modeled with:
+    
+    \begin{equation}
+    \text{scale}_{t+1} = 
+    \begin{cases}
+        \text{scale}_t \times \alpha_{\text{inc}}, & \text{if no overflow for $n_{\text{stable}}$ consecutive updates} \\
+        \text{scale}_t \times \alpha_{\text{dec}}, & \text{if overflow detected}
+    \end{cases}
+    \end{equation}
+    
+    where typical values are $\alpha_{\text{inc}}=2$, $\alpha_{\text{dec}}=0.5$, and $n_{\text{stable}}=2000$.
+
+    \item \textbf{Training stability techniques:} To ensure reliable model convergence, we implemented:
+    \begin{itemize}
+        \item Gradient clipping with a maximum norm of 1.0 using \texttt{torch.nn.utils.clip\_grad\_norm\_}, which prevents "exploding gradients"—a common issue in deep networks where accumulated gradients become excessively large, causing training instability. Our implementation explicitly applies this to both model and projection head parameters.
+        
+        \item Cosine learning rate schedule with 10\% linear warmup period, implemented via our custom \texttt{warmup\_cosine\_schedule} function:
+        \begin{equation}
+        \eta_t = \eta_{\text{min}} + \frac{1}{2}(\eta_{\text{max}} - \eta_{\text{min}})(1 + \cos(\pi \cdot \frac{t-t_{\text{warmup}}}{t_{\text{max}}-t_{\text{warmup}}}))
+        \end{equation}
+        for $t > t_{\text{warmup}}$ and linear ramp-up for $t \leq t_{\text{warmup}}$. This schedule adjusts the learning rate throughout training, helping our model avoid local optima.
+        
+        \item \textbf{Adaptive weight decay} ($1 \times 10^{-3}$) applied through our \texttt{AdamW} optimizer configuration, which helps prevent overfitting on our limited archaeological dataset by penalizing large weights.
+    \end{itemize}
+\end{enumerate}
+
+These implementation strategies collectively enabled efficient training of our hybrid architecture, with full ensemble training completed in approximately 4 hours. The combination of architectural innovations and computational optimizations allowed us to effectively learn meaningful script representations despite the challenging nature of the dataset and the multi-component architecture of our model.
+
+\section{Evaluation and Validation}
+\noindent\hspace{1cm}
+To verify that the model learned meaningful representations and to validate our hypothesis about script similarities, comprehensive evaluation ensued; this included qualitative visualization of model attention, quantitative clustering metrics, embedding similarity analysis, dimensionality reduction for visualization, and rigorous statistical testing.
+
+We utilized Gradient-weighted Class Activation Mapping (Grad-CAM) to visualize which image regions our model found important when analyzing ancient scripts. While the original Grad-CAM technique \cite{selvaraju_grad-cam_2020} was designed for classification tasks, our custom implementation adapts it for representation learning by tracking which image parts contribute most to the model's overall understanding. Our code uniquely handles both CNN and Transformer pathways—something not present in the original approach—allowing us to compare how different network architectures process the same glyph. This approach backpropagates, or traces backward, through our model to identify influential regions in the original image, creating visual heatmaps of attention.
+
+\begin{figure}[H]  
+    \centering
+    \includegraphics[width=1\linewidth]{Visualizations/Figures/Grad-CAM.pdf}
+    \caption[Grad-CAM Visualizations for CNN and Swin Transformer Pathways]{Dual-model Grad-CAM visualization. \textit{Left:} CNN pathway highlights local details, focusing on intersection. 
+    \textit{Right:} Swin Transformer attention forms grid-like patterns with more globally distributed focus.}
+    \label{fig:gradcam}
+\end{figure}
+
+Heatmaps of "important" regions in an input image are generated by using the gradients flowing into the last convolutional layers or transformer blocks. We observed distinct and complementary patterns in our dual-pathway approach (Figure \ref{fig:gradcam}). The CNN Grad-CAM visualizations highlighted specific local features of glyphs, such as curved segments, junctions, or distinct patterns (as seen in \ref{fig:gradcam}). In contrast, the Transformer Grad-CAM visualizations revealed a more holistic pattern recognition approach, highlighting broader regions that defined overall structure and proportions. Due to its shifted window attention mechanism, the map, when projected back into image space, reads as stratified grid lines. 
+
+Key glyph components were demarcated as high-importance regions in the CNN pathway, indicating these features drove the model's embedding. We performed Grad-CAM on examples from each script in both the target and comparison sets, consistently finding that models focused on meaningful glyph features rather than artifacts (Appendix \ref{app: gradcam}). The complementary nature of our CNN and Transformer attention mechanisms proved particularly valuable for comparing scripts with different levels of visual complexity, allowing our model to identify similar structural patterns despite differing complexity levels across script traditions.
+
+\subsection{Similarity Analysis}
+\noindent\hspace{1cm}
+Using learned embeddings, we conducted a pairwise similarity analysis to test our hypotheses directly. For each pair of script sets (for example, Indus vs. TYC), we computed the cosine similarity between all embeddings of images from the first script and all embeddings of images from the second script. Mathematically, for scripts $S_1$ and $S_2$ with embedding sets, the mean similarity was calculated as:
+
+\begin{equation}
+\text{sim}(S_1, S_2) = \frac{1}{|S_1||S_2|}\sum_{x \in S_1}\sum_{y \in S_2}\frac{z(x)^T z(y)}{||z(x)|| \cdot ||z(y)||}
+\end{equation}
+
+where $z(x)$ and $z(y)$ represent the $d$-dimensional learned embedding vectors of script images $x$ and $y$, respectively, extracted from the trained model, and $z(x)^T z(y)$ denotes their dot product, which computes the numerator of the cosine similarity between the two embeddings.
+This produced a distribution of similarity scores for each script pair. The cosine similarity values (ranging from -1 to 1) indicate how closely related the feature representations of two scripts are—higher values mean the model sees those script images as more similar. After compiling these similarity computations across the ensemble, each of the five models produced its own set of similarities, and so we took the mean similarity and standard deviation across the ensemble. This allowed us to quantitatively evaluate our hypothesis: if Indus is visually closer to TYC scripts, we expect the Indus–TYC similarity scores to be higher on average than Indus–Proto-Cuneiform or Indus–Proto-Elamite scores, and this should hold consistently across ensemble members (which it did, as our results (chapter \ref{results}) will show). The consistency of results across the five models (all showing the same ordering of similarities) was noted as an important validation that no single model was aberrant.
+
+\subsection{Clustering}
+\noindent\hspace{1cm}
+Beyond internal metrics, we applied unsupervised clustering algorithms on the embeddings to see if the model's features would naturally group the scripts correctly, and to explore the structure of the embedding space. We experimented with bottom-up hierarchical clustering for each model individually, producing dendrograms of script relationships using various linkage methods (single, complete, average, and Ward). By comparing results across different linkage criteria and across models, we ensured the observed hierarchical relationships were consistent and not artifacts of a particular model or linkage method, following best practices established by Saxena et al. \cite{saxena_review_2017}.
+
+
+\subsection{Dimensionality Reduction}
+\noindent\hspace{1cm}
+We also implemented dimensionality reduction to visualize our embeddings in 2D/3D spac.
+
+\begin{itemize}
+    \item \textbf{t-SNE (t-Distributed Stochastic Neighbor Embedding):} We applied t-SNE \cite{van_der_maaten_viualizing_2008} to produce a 2D plot; this technique minimizes the Kullback-Leibler divergence between probability distributions in high and low dimensional spaces:
+    \begin{equation}
+    \text{KL}(P||Q) = \sum_{i}\sum_{j}p_{ij}\log\frac{p_{ij}}{q_{ij}}
+    \end{equation}
+    While the t-SNE plots by individual model were more abstract and showed more spread by each language, the ensemble plots revealed clear clusters of points corresponding to each script (Appendix \ref{app: t-sne}), which provided a visual confirmation of the separation (as well as a validation of the ensemble technique).
+    
+    \item \textbf{PCA (Principal Component Analysis):} We used PCA as a linear projection method. By examining the first two principal components of the embeddings, we checked if script groupings were evident in a linear subspace. PCA explained a reasonable portion of variance and again showed clear patterns between script clusters (though not as cleanly as t-SNE, given PCA is linear). 
+\end{itemize}
+
+These clustering and visualization methods served as an important validation step, demonstrating that the model's embeddings could recover script categories. The fact that the spatial arrangement of clusters in visualization seemed to reflect known or hypothesized relationships provides confidence in the model's effectiveness; such tendencies were indeed observed in the embedding space plots (detailed in chapter \ref{results}).
+
+\subsection{Statistical Analysis}
+Finally, we implemented a rigorous statistical framework to test our primary hypothesis:\textit{ that the Tibetan Yi-Corridor scripts (Naxi, Ba-Shu, Yi) are more visually similar to the Indus Valley script than the other ancient scripts (Proto-Cuneiform, Proto-Elamite) are}. Rather than relying on qualitative observations, we quantified this and applied hypothesis tests. We focused on comparing the cosine similarity distributions between script pairs of interest. The key comparisons were:
+
+\begin{itemize}
+    \item \textbf{TYC to Indus vs. TYC to Proto-Cuneiform/Proto-Elamite:} We tested whether TYC-Indus similarities are significantly higher than Indus–Proto-Cuneiform/Proto-Elamite similarities.
+    \item \textbf{Indus to TYC vs. Indus to Proto-Cuneiform/Proto-Elamite:} Similarly, we tested whether Indus–TYC similarity exceeds Indus–Proto-Elamite/Proto-Cuneiform similarity significantly.
+\end{itemize}
+
+For each comparison, we conducted Welch's t-test \cite{welch_generalization_1947} to determine whether the observed differences in similarity distributions were significant. For similarity distributions from scripts $S_1$, $S_2$, and $S_3$ (e.g., Indus, TYC, and Proto-Cuneiform), we tested whether the mean similarity between $S_1$ and $S_2$ significantly differs from the mean similarity between $S_1$ and $S_3$. The t-statistic for this comparison is calculated as:
+
+\begin{equation}
+t = \frac{\overline{\text{sim}(S_1, S_2)} - \overline{\text{sim}(S_1, S_3)}}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}}
+\end{equation}
+
+where $\overline{\text{sim}(S_1, S_2)}$ and $\overline{\text{sim}(S_1, S_3)}$ are the mean similarities, $s_1^2$ and $s_2^2$ are the variances of the similarity distributions, and $n_1$ and $n_2$ are the sample sizes. For pairs with large numbers of similarity comparisons (>1000), we employed a strategic subsampling approach, selecting approximately $\sqrt{1000}$ samples from each distribution to maintain computational efficiency while preserving statistical validity.
+
+By aggregating at the model level, we were able to simplify our analysis: for each of the five ensemble models, we computed the mean similarity for each pair (Indus–TYC, Indus–Cuneiform, Indus–Elamite). This gave five values for each type of comparison. We then performed a paired t-test on those values (paired by model) to see if, e.g., Indus–TYC mean similarity is consistently higher than Indus–Cuneiform across models. For this model-level paired t-test, the test statistic is:
+
+\begin{equation}
+t = \frac{\overline{d}}{s_d / \sqrt{N}}
+\end{equation}
+
+where $\overline{d}$ is the mean difference between the similarity scores across models, $s_d$ is the standard deviation of these differences, and $N$ is the number of models (5 in our case).
+
+Despite consistently significant t-test results (p < 0.001), we encountered a common challenge in large-sample comparisons: p-values approached zero across all tests, potentially overstating the importance of subtle differences \cite{sullivan_using_2012}. To address this limitation and provide meaningful interpretation within our compressed high-similarity space (>0.85 for related scripts), we incorporated Cohen's d effect size analysis:
+
+\begin{equation}
+d = \frac{\overline{\text{sim}(S_1, S_2)} - \overline{\text{sim}(S_1, S_3)}}{\sqrt{\frac{(n_1-1)s_1^2 + (n_2-1)s_2^2}{n_1 + n_2 - 2}}}
+\end{equation}
+
+This standardized measure quantifies the practical significance of differences, distinguishing between statistically significant results that represent negligible effects (d < 0.2) versus those indicating substantial relationships (d ≥ 0.8) \cite{cohen_statistical_1988}.
+
+Additionally, a Bonferroni correction was applied to our significance threshold \cite{bland_multiple_1995, bonferroni_teoria_1936}. This means we required each test to be significant at α/n (where n is the total number of tests performed):
+
+\begin{equation}
+\alpha_{\text{corrected}} = \frac{\alpha}{n}
+\end{equation}
+
+This maintains an overall family-wise error rate of α=0.05, controlling for multiple comparisons. This is a conservative approach to ensure that any finding of greater similarity is not a false positive.
+
+The results of these statistical tests (reported in chapter \ref{results}) did indicate a significant difference: the Indus–TYC similarity was higher, with p-values well below the adjusted threshold, supporting our hypothesis. We also confirmed consistency across the ensemble models as mentioned: all 5 models showed the same trend of Indus being closest to TYC with no outlier model contradicting this. This was further quantified by making sure that removing any single model from the ensemble did not change the overall conclusion and the result was not driven by one peculiar model—otherwise known as leave-out testing—following ensemble stability evaluation practices suggested by \cite{fort_deep_2019}. This consistency analysis adds robustness: it's unlikely that the observed similarity is due to chance or overfitting in one model, given all independent models converged on a similar solution.
+
+\section{Limitations and Controls}
+\noindent\hspace{1cm}
+We acknowledge several limitations in our methodology and data, and implemented specific controls to mitigate their impact:
+
+\begin{itemize}
+
+    \item \textbf{Limited sample size:} The scarcity of data (Indus, Old Naxi, Proto-Elamite) limits generalization and risks overfitting. We mitigated this with data augmentation, ensemble learning, early stopping, and contrastive learning with variance/uniformity regularization. Cross-validation ensured robustness across random splits.
+
+    \item \textbf{Digitization bias:} Image sources varied—from standardized corpora to manuscript photos—posing risk of bias. Standardized preprocessing (grayscale, contrast normalization, glyph isolation) and Grad-CAM visualizations confirmed focus on glyph structure, not artifacts. Some bias may remain, and so we interpret results cautiously.
+
+    \item \textbf{Script complexity differences:} Our CNN-Transformer model extracts local and global features, reducing bias from stroke complexity. Grad-CAM showed attention to subcomponents, and clustering patterns were not driven by stroke count alone.
+
+    \item \textbf{Generalization safeguards:} We used a 70/20/10 split, early stopping, dropout (0.1), weight decay (1e-3), and gradient clipping. Warmup-cosine learning rates and validation-based model selection ensured stability and generalization despite data limitations.
+
+\end{itemize}
+
+In summary, our approach combines deep learning with ensemble techniques and multi-faceted validation to ensure discovered patterns are genuine and interpretable, establishing a solid foundation for investigating historical script connections through visual analysis.
+
+\chapter{Results}
+\label{results}
+\noindent\hspace{1cm}
+This section presents our comparative analysis of TYC scripts (newer Dongba, older Dongba, and ancient TYC) against ancient writing systems (Indus, Proto-Cuneiform, and Proto-Elamite) using feature representations generated by our hybrid computer vision model\footnote{For clarity in our data, Naxi-Dongba refers to the newer Dongba dataset, and Old-Naxi refers to the older. TYC refers to the combined dataset of Ba-Shu pictographs, Classical Yi, and the aforementioned older Dongba dataset in equal parts.}.
+
+\section{Cross-Script Similarity Metrics}
+\noindent\hspace{1cm}
+\begin{table}[H]
+\centering
+\caption{Mean Cosine Similarity Between Comparison and Target Scripts}
+\label{tab:mean_similarity}
+\begin{tabular}{lccc}
+\hline
+\textbf{Comparison Script} & \textbf{Indus} & \textbf{Proto-Cuneiform} & \textbf{Proto-Elamite} \\
+\hline
+TYC & 0.635 & 0.102 & 0.078 \\
+Naxi-Dongba & 0.634 & 0.109 & 0.087 \\
+Old-Naxi & 0.617 & 0.106 & 0.076 \\
+\hline
+\end{tabular}
+\end{table}
+
+Table \ref{tab:mean_similarity} presents the mean cosine similarity scores across our ensemble of five independently trained models. These results reveal a striking pattern: all three comparison scripts show substantially higher similarity to the Indus script (61.7\%-63.5\%) than to either Proto-Cuneiform (10.2\%-10.9\%) or Proto-Elamite (7.6\%-8.7\%). The magnitude of this difference—approximately six-fold higher similarity to the Indus script—suggests a specific relationship that supports our initial hypothesis of a potential historical connection between these writing systems. Notably, the Indus script maps closer to TYC scripts than to Proto-Elamite or Proto-Cuneiform, despite the latter's proximal positions in time, space, and documented interactions (Figure \ref{fig:cosine}). As expected, West Asian scripts identify each other as their closest match.
+
+\begin{figure}[H]  
+    \centering
+    \includegraphics[width=1\linewidth]{Visualizations/Cosine Similarity/indus_ensemble_similarities.pdf}
+    \caption{Indus Ensemble Cosine Similarity Plot}
+    \label{fig:cosine}
+\end{figure}
+
+\subsection{Effect Size Analysis}
+\noindent\hspace{1cm}
+
+While the statistical significance (p < 0.001) of our findings established that the observed similarity patterns were unlikely due to chance, the effect size analysis provided crucial context about the magnitude of these differences. Table \ref{tab:effect_size} presents Cohen's d values for key script comparisons across our ensemble models.
+
+\begin{table}[H]
+\centering
+\caption{Mean Effect Size (Cohen's d) Between Script Comparisons}
+\label{tab:effect_size}
+\begin{tabular}{lccc}
+\hline
+\textbf{Comparison Script} & \textbf{Indus vs. Proto-C} & \textbf{Indus vs. Proto-E} & \textbf{Proto-C vs. Proto-E} \\
+\hline
+TYC & 7.13 (large) & 7.45 (large) & 0.46 (small) \\
+Naxi-Dongba & 8.15 (large) & 8.36 (large) & 0.41 (small) \\
+Old-Naxi & 7.16 (large) & 7.57 (large) & 0.61 (medium) \\
+\hline
+\end{tabular}
+\end{table}
+
+The effect sizes for the comparisons between Indus and West Asian scripts were consistently enormous (d > 6.8), far exceeding Cohen's threshold for "large" effects (d ≥ 0.8). Interestingly, the comparison between Proto-Cuneiform and Proto-Elamite also showed large effect sizes (0.85-1.12), though considerably smaller than the primary comparisons, aligning with historical understanding that these West Asian scripts shared certain visual conventions and potentially influenced each other. Nevertheless, this effect is dwarfed by the much stronger Indus-TYC relationship our analysis revealed.
+
+\section{Ensemble Model Consistency}
+\noindent\hspace{1cm}
+Table \ref{tab:complete_similarity} presents the complete similarity matrix demonstrating consistent patterns across all five models in our ensemble.
+
+\begin{table}[H]
+\centering
+\caption{Complete Similarity Matrix Across All Models}
+\label{tab:complete_similarity}
+\begin{tabular}{llccc}
+\hline
+\textbf{Comparison Script} & \textbf{Model} & \textbf{Indus} & \textbf{Proto-Cuneiform} & \textbf{Proto-Elamite} \\
+\hline
+TYC & model\_0 & 0.607199 & 0.064351 & 0.098311 \\
+TYC & model\_1 & 0.613448 & 0.067255 & 0.065887 \\
+TYC & model\_2 & 0.626782 & 0.072332 & 0.081921 \\
+TYC & model\_3 & 0.650874 & 0.073373 & 0.070953 \\
+TYC & model\_4 & 0.678075 & 0.231436 & 0.074483 \\
+\hline
+Naxi-Dongba & model\_0 & 0.577379 & 0.070971 & 0.082362 \\
+Naxi-Dongba & model\_1 & 0.655400 & 0.054296 & 0.098983 \\
+Naxi-Dongba & model\_2 & 0.578332 & 0.051874 & 0.093169 \\
+Naxi-Dongba & model\_3 & 0.684051 & 0.082636 & 0.077289 \\
+Naxi-Dongba & model\_4 & 0.675574 & 0.282917 & 0.083985 \\
+\hline
+Old-Naxi & model\_0 & 0.620153 & 0.072526 & 0.101854 \\
+Old-Naxi & model\_1 & 0.570650 & 0.076422 & 0.052467 \\
+Old-Naxi & model\_2 & 0.653981 & 0.075445 & 0.086738 \\
+Old-Naxi & model\_3 & 0.596160 & 0.086085 & 0.071727 \\
+Old-Naxi & model\_4 & 0.645789 & 0.220979 & 0.065582 \\
+\hline
+\end{tabular}
+\end{table}
+
+The model-by-model analysis confirms the robust pattern of Indus script dominance across independently trained models—a mean similarity of 0.629 compared to 0.104 for Proto-Cuneiform and 0.080 for Proto-Elamite. While model\_4 shows elevated Proto-Cuneiform similarity scores (22.1\%-28.3\%), these remain significantly below the corresponding Indus similarities, likely reflecting model-specific feature capture rather than fundamental script relationships.
+
+
+\section{Script-Specific Patterns}
+
+Analysis of individual script comparisons reveals:
+
+\begin{itemize}
+    \item \textbf{TYC Script:} Consistent relationship with Indus script (similarity 60.7\%-67.8\%)
+
+    \item \textbf{Naxi-Dongba Script: }Highest absolute Indus similarity (68.4\%) but greatest variance (57.7\%-68.4\%), potentially reflecting stylistic evolution
+
+    \item \textbf{Old-Naxi Script:} Most consistent Indus relationship with lowest variance (57.1\%-65.4\%), possibly preserving archaic features aligning with Indus script
+\end{itemize}
+
+The consistency across these historically and geographically varied writing systems suggests genuine structural and visual affinities rather than coincidental similarities.
+
+\newpage
+\section{Dimensionality Reduction Analysis}
+\noindent\hspace{1cm}
+Our t-SNE visualization reveals three distinct clusters: (1) Proto-Cuneiform and Proto-Elamite, (2) Indus, TYC, and older Dongba, and (3) newer Dongba script. This clustering pattern supports our theoretical framework by distinguishing West Asian scripts, ancient TYC-IVC scripts, and Sinicized TYC scripts. Additional t-SNE plots can be found in Appendix \ref{app: t-sne}.
+
+\begin{figure}[H] 
+    \centering
+    \includegraphics[width=1\linewidth]{Visualizations/t-SNE/Proto-Cuneiform/ensemble_tsne.pdf}
+    \caption{Proto-Cuneiform Ensemble Embeddings t-SNE Visualization}
+    \label{fig:t-sne}
+\end{figure}
+
+PCA mapping further corroborates these findings. In 3D plots, older TYC scripts (including older Dongba) cluster with Indus and West Asian languages, while newer Dongba appears as a consistent outlier due to Sinitic influences. This aligns with the findings of Daggumati and Revesz \cite{daggumati_convolutional_2023, daggumati_data_2018, daggumati_data_2019}, who discovered through similar computer vision analysis that the Indus script visually clusters with Proto-Cuneiform and Proto-Elamite rather than other ancient writing systems, such as Brahmi or early European scripts. Additional PCA plots can be found in Appendix \ref{app: pca}.
+
+\begin{figure}[H]  
+    \centering
+    \includegraphics[width=1\linewidth]{Visualizations/PCA/Proto-Elamite/ensemble_pca_3d.pdf}
+    \caption{3D Proto-Elamite Ensemble Embeddings PCA Visualization}
+    \label{fig:pca}
+\end{figure}
+
+\section{Hierarchical Clustering}
+\noindent\hspace{1cm}
+We applied hierarchical agglomerative clustering to script embeddings using cosine similarity as the distance metric. Multiple linkage methods (single, complete, average, and Ward's) were tested to assess the robustness of the structural relationships between scripts. All ensemble dendrograms can be found in Appendix \ref{app: dendro}.
+
+\begin{figure}[H]  
+    \centering
+    \includegraphics[width=1\linewidth]{Visualizations/Dendrograms/Indus/ensemble_dendrogram_complete.pdf}
+    \caption{Indus Ensemble Embeddings Complete Linkage Dendrogram}
+    \label{fig:dendrogram}
+\end{figure}
+
+The dendrograms across our ensemble models (Figure \ref{fig:dendrogram} and Appendix \ref{app: dendro}) consistently reveal two primary clusters: (1) Indus, old Dongba, and TYC forming one tight group, and (2) Proto-Cuneiform and Proto-Elamite forming another. Interestingly, while newer Dongba typically appears as an outlier in previous analyses, hierarchical clustering shows it tends to merge with the West Asian scripts at higher levels rather than with the Indus/TYC cluster.
+
+\begin{figure}[H]  
+    \centering  
+    \includegraphics[width=1\linewidth]{Visualizations/Clustered Heatmaps/Proto-Cuneiform/ensemble_clustered_similarity_ward.pdf}
+    \caption{Proto-Cuneiform Ensemble Ward Linkage Heatmap}
+    \label{fig:heatmap}
+\end{figure}
+
+As seen in Figure \ref{fig:heatmap}, our heatmaps display two distinct high-similarity regions (dark patches) at the intersections of West Asian scripts and at the TYC/Indus script intersection. This consistent pattern across multiple visualization techniques and mathematical approaches provides substantial evidence for the relationships identified in our feature embeddings. All ensemble heatmaps for all metrics can be found in Appendix \ref{app: heatmaps}.
+
+\chapter{Discussion}
+\label{discussion}
+\section{Interpretation of Script Similarity Patterns}
+\noindent\hspace{1cm}
+Our computational analysis reveals a striking and consistent pattern: TYC scripts (including both older and newer Dongba variants) demonstrate approximately six-fold higher similarity to the Indus Valley script compared to West Asian writing systems. This robust finding, consistent across 15 independently trained models and multiple analytical approaches, suggests a potential historical relationship between the Indus civilization and early writing systems of the TYC that warrants serious consideration.
+
+The significantly higher cosine similarities between TYC scripts and the Indus script (61.7\%-63.5\%) compared to Proto-Cuneiform (10.2\%-10.9\%) or Proto-Elamite (7.6\%-8.7\%) suggest that the visual and structural characteristics shared between TYC and Indus scripts transcend coincidental resemblance. This pattern is particularly noteworthy given that Proto-Cuneiform and Proto-Elamite, despite their documented historical interactions with the Indus civilization, show markedly lower similarity scores; we take particular consideration of the previously mentioned work of Daggumati and Revesz \cite{daggumati_convolutional_2023, daggumati_data_2018, daggumati_data_2019}. Within this context, we do not discount the measured similarities between the Indus and West Asian scripts altogether; rather, the visual closeness of the TYC scripts inside the scope of this relationship should be valued even more so in conjunction.
+
+In our visualizations, namely our t-SNE plots (Figure \ref{fig:t-sne} and Appendix \ref{app: t-sne}) and dendrograms (Figure \ref{fig:dendrogram} and Appendix \ref{app: dendro}, the Indus script clusters with the TYC and old Dongba datasets. Proto-Cuneiform and Proto-Elamite form their own clusters, with modern Dongba either forming its own subcategory or merging eventually with the West Asian scripts (at very high levels). Even more interesting is the treatment of modern Dongba within our PCA plots—with more variance, all other datasets tend to cluster together in the 3D space, leaving modern Dongba as the true outlier (Figure \ref{fig:pca} and Appendix \ref{app: pca}. This signifies a larger ancient script tradition rooted in antiquity which modern Dongba may have outgrown over centuries, and that while we are nitpicking small differences, these scripts may all be more similar than we have yet to consider.
+
+\subsection{Interpreting Cohen's d with Low Variance}
+\noindent\hspace{1cm}
+
+The extreme Cohen’s $d$ values (up to $d=10.02$) observed in our Indus-TYC comparisons arise from both substantial differences in group means and exceptionally low within-group variance in similarity scores. While Cohen’s $d$ quantifies the standardized difference between two means, its magnitude is inversely proportional to the pooled standard deviation ($SD_p$), as defined:
+
+\begin{equation}
+d = \frac{M_1 - M_2}{SD_p}
+\end{equation}
+
+\noindent where $M_1$ and $M_2$ are the group means, and $SD_p$ is the pooled standard deviation calculated by:
+
+\begin{equation}
+SD_p = \sqrt{\frac{(SD_1^2 + SD_2^2)}{2}}
+\end{equation}
+
+In our similarity distributions, the standard deviations are consistently small ($SD_1, SD_2 \approx 0.02 - 0.05$), while the differences in means are substantial ($M_1 - M_2 \approx 0.50 - 0.60$). This results in inflated $d$ values, as even moderate mean differences divided by minimal dispersion yield extreme standardized effects.
+
+Such effect sizes vastly exceed conventional benchmarks—namely, the $d=0.8$ classification for "large" effects \cite{cohen_statistical_1988}). While these magnitudes are mathematically valid, they do warrant careful interpretation. The bounded nature of similarity scores ($0 \leq x \leq 1$) and the tight clustering within groups inherently suppress variance, inflating standardized measures.
+
+Nonetheless, the consistency of these patterns across independent models and across different script datasets suggests that the relative relationships—rather than absolute magnitudes—are robust. Specifically, the persistent gap between Indus-TYC similarities and those involving Proto-Cuneiform or Proto-Elamite substantiates the hypothesis of a closer structural alignment between Indus and TYC script forms.
+
+\section{Historical Implications}
+\noindent\hspace{1cm}
+These findings align with the aims of our experiment in identifying the potential for Indus influence on the TYC scribal traditions, and further solidify our main anthropological hypothesis of an existent relationship in some form between the two cultures and peoples. The consistent clustering of Indus, old Dongba, and TYC scripts across multiple visualization techniques (t-SNE, PCA, hierarchical linkage) provides numerical and statistical evidence that may work to support unexplored historical transmission theories and lend statistical support to the early usage of the Shu-Shendu trans-Hengduan road.
+
+The divergence of the newer Dongba script—consistently appearing as an outlier or clustering with West Asian scripts at higher levels—reflects its documented Sinicization and modern distance from the original ancient TYC tradition. This evolution provides a valuable control within our analysis, demonstrating that our model successfully distinguishes between indigenous and imported scribal traditions in the TYC region.
+
+This newfound connection aims to spark further study and exploration, especially into potential connection of the IVC to Ba-Shu cultures and the preceding civilization of Sanxingdui—both of which remain a large unknown compared to the documented Han dynasties of China. We also hope to have opened a new avenue within the existing study of Indology and provide experts with a novel approach to deciphering the Indus script (and consequently, the Ba-Shu scripts), which remains a pressing question of our time \cite{kb_want_2025}. The IVC also serves as a doorway to surviving cultures; determining the script and language's proper classification and, therefore, descendancy creates a pathway of study linking the TYC to modern Indian subcontinental demographics.
+
+
+\section{Methodological Contributions}
+\noindent\hspace{1cm}
+Our hybrid CNN-Transformer approach combines the complementary strengths of convolutional layers (for local feature extraction) and self-attention mechanisms (for capturing long-range dependencies), effectively capturing both fine-grained stroke patterns and global structural relationships in ancient scripts. Combined with our contrastive loss functionality, ensemble learning strategy, and rigorous statistical testing, we establish a robust quantitative foundation for comparing ancient writing systems that moves beyond subjective visual assessments. By applying multiple dimensionality reduction techniques (t-SNE, PCA) and hierarchical clustering with various linkage methods, we ensure that the observed script relationships are genuine and not artifacts of any particular analytical approach, drawing meaningful patterns.
+
+\section{Alternative Interpretations}
+\noindent\hspace{1cm}
+While our findings strongly suggest a potential historical connection between the Indus script and TYC writing systems, several alternative explanations warrant consideration:
+
+\begin{enumerate}
+    \item \textbf{Independent origination:} The similarity between TYC and Indus scripts could potentially arise from independent development of similar graphical solutions for representing comparable concepts. Pictographic systems often begin with similar intuitive representations before evolving into more complex forms.
+    \item \textbf{Common ancestry:} Both script traditions might derive from an even older, as-yet-undiscovered symbolic system that predates both the Indus Valley Civilization and the early symbolic traditions of the TYC region.
+    \item \textbf{Convergent evolution:} Similar environmental or cultural constraints could lead to parallel symbolic development. The functional requirements of recording certain types of information (counting systems, agricultural cycles, or religious practices) might naturally produce similar pictographic solutions across cultures.
+
+\end{enumerate}
+
+The highly specific nature of some similarities, particularly in numerical systems and gender markers, makes these alternative explanations less likely than some form of cultural transmission—direct or indirect—but they cannot be conclusively ruled out without additional archaeological evidence.
+
+\chapter{Conclusions}
+\label{conclusions}
+\noindent\hspace{1cm}
+This study provides substantial evidence supporting our primary hypothesis of a significant visual relationship between the Indus Valley script and writing systems of the TYC. Through our hybrid CNN-Transformer computational approach and ensemble modeling, we consistently observed approximately six-fold higher similarity between TYC scripts and the Indus script (61.7\%-63.5\%) compared to Proto-Cuneiform (10.2\%-10.9\%) or Proto-Elamite (7.6\%-8.7\%). This finding remained robust across five independently trained models and multiple analytical approaches, including cosine similarity analysis, dimensionality reduction techniques, and hierarchical clustering.
+
+These computational results, combined with our qualitative observations of specific pictorial parallels, particularly in numerical systems, gender markers, and key iconographic elements like the sky/roof character and city representations, are remarkably consistent across analytical methods and suggest these similarities are not coincidental but rather may reflect genuine historical connections.
+
+Our findings in conjunction with the presented anthropological evidence give credit to the theory of possible transmission along the ancient Shu-Shendu road, active during the critical period following the abandonment of IVC cities in the second millennium BCE. Archaeological evidence of cross-regional exchanges—including cowrie shells from the Indian Ocean at sites in Southwestern China and evidence of crop transmission—substantiates the existence of sustained contact networks through which symbolic systems could have diffused.
+
+While alternative explanations remain plausible (independent invention, common ancestry, or convergent evolution), the specific nature of the similarities identified through both computational and anthropological approaches is difficult to attribute to chance alone. The consistent clustering of Indus, old Dongba, and TYC scripts, coupled with specific iconographic parallels, suggests a more direct relationship than previously recognized.
+
+These findings challenge conventional narratives about the isolated development of writing systems in South and East Asia and invite reconsideration of complex cultural transmission networks that may have connected the Indus Valley and the TYC following the decline of the Indus Valley Civilization. By bridging computational paleography with anthropological evidence, this research offers new perspectives on the interactions of the IVC people and culture that may aid in uncovering the unknowns of their civilizations and especially the encoding of their elusive inscriptions.
+
+\section{Limitations}
+\noindent\hspace{1cm}
+Our study faces several methodological constraints that should be acknowledged. The available corpus of images from each script tradition is limited—only 5\% of the IVC has been excavated, and the symbols found are constrained by their contextual usage primarily on seals. Similarly, our old Dongba database is not comprehensive—many older Rerko manuscripts have been destroyed over time—and biased towards frequency. The visual features captured by our model may not fully represent the functional or phonological characteristics of these writing systems, as our approach focuses primarily on visual similarity rather than linguistic or semantic content.
+
+Additionally, differences in image preservation and digitization across the various script sources introduce potential biases. While our preprocessing steps and Grad-CAM validations helped mitigate these concerns, subtle artifacts may remain that could influence similarity assessments. 
+
+\section{Future Research}
+\noindent\hspace{1cm}
+Building on our findings, several promising research directions emerge. First, we propose applying our computational methodology to analyze the extensive corpus of rock art on the Tibetan Plateau \cite{bellezza_comprehensive_2023}, which may reveal additional connections to TYC morphological systems and, ergo, Indus. Second, we recommend intensifying archaeological investigations along the Shu-Shendu Road corridor, particularly focusing on Northeast India and the eastern edges of the Tibetan Plateau—regions that remain critically underexplored despite their potential significance in understanding ancient routes of transmission across less understood civilizations like the IVC and Sanxingdui/Jinsha \cite{ma_understanding_2023}. Third, our visual embedding framework could be extended to incorporate linguistic constraints and semantic annotations where available, potentially advancing decipherment efforts for both the Indus script and Ba-Shu pictography. Finally, expanding our comparative analysis to include other ancient writing systems from Central and East Asia could further elucidate the complex network of cultural and symbolic exchange that characterized these historically significant regions, as well as introduce control variables to contextualize the strength of similarity.
+
+\section{Code Availability}
+\noindent\hspace{1cm}
+All code, data, models, and experimental results pertaining to this thesis are are publicly available on GitHub at \url{https://github.com/oohalakkadi/ivc2tyc}.
+
+\chapter*{References}
+\label{references}
+\addcontentsline{toc}{chapter}{References}
+
+\printbibliography[heading=none]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter*{SW Narrative}
+\noindent\hspace{1cm}
+My Signature Work (SW) project represents the culmination of an interdisciplinary academic journey that began with an intended major in Political Economy and slingshotted in the other direction with the completion of my major in Computation and Design. This trajectory was not linear, but instead shaped by a series of courses and lived experiences that consistently emphasized the value of bridging the humanities and computational methods. My thesis—an exploration of potential historical connections between the visual morphology of the Indus Valley script and pictographic systems of the Tibetan-Yi Corridor (TYC)—is the product of both rigorous technical modeling and a humanistic, anthropological framework. It is a demonstration not only the skills I have acquired during my undergraduate studies but also the way these skills can be used to produce meaningful scholarship.
+
+My thematic coursework provided the foundation for this research; each of the three courses I selected contributed a distinct perspective and set of tools that I drew upon throughout the development of my project. As I spent the first three formative years of my undergraduate career on the Duke University campus, my course selections fall accordingly.
+
+The first, \textit{Introduction to Digital Humanities} (VMS 203D), introduced me to the vast potential of computational methods in humanistic inquiry. This course emphasized the ethical and cultural implications of digital scholarship while also providing hands-on experience with techniques such as text analysis, digital mapping, and data visualization. Through VMS 203D, I became familiar with how large corpora can be analyzed to solve humanities problems, and it was here that I first engaged with prior digital scholarship on undeciphered scripts like the Indus script in its tangential relation to my final project on the digital preservation of dying languages. This course gave me not only tools, but also the passion driving this work.
+
+The second course, \textit{Computational Approaches to Language Processing} (COMPSCI 390), provided me with a deeper understanding of machine learning methodologies, particularly the Transformer architecture that forms the basis of modern natural language processing (NLP). In this course, I gained practical experience in implementing machine learning models, specifically in my final project using FinBERT for sentiment analysis. These skills were directly applicable to my thesis, where I employed a hybrid CNN-Transformer architecture to analyze visual data from ancient scripts. The course also emphasized the importance of careful data preprocessing and model evaluation, lessons that proved critical when developing an ensemble of 15 independently trained networks for my thesis.
+
+Finally, \textit{Introduction to Computer Systems} (COMPSCI 210D) deepened my understanding of the computational systems that underpin machine learning applications. This course covered topics such as memory management, concurrency, and data representation at a low level—knowledge that became invaluable when working on an computationally intensive project like my thesis. Understanding the memory hierarchy and the operating system's process model allowed me to optimize my model training and manage computational resources efficiently via a hosted Google A100 GPU and the implementation mixed precision training. In addition, the course sharpened my ability to deconstruct machine learning architectures and troubleshoot issues in computer vision workflows, memorably through assembly breakpointing project like the Bomb Lab.
+
+While these thematic courses equipped me with the technical skills and theoretical frameworks necessary for my Signature Work, it was my capstone experience that allowed me to contextualize my degree within the scope of personal growth. I took COMPDSGN 490 as an opportunity to apply the multitude of skills I have acquired across my undergraduate career. Much of my work in my senior seminar was heavily technical in the field of digital media, and while unrelated to this work, it served to greatly boost my own confidence in my intuition and ability—deeply necessary in pursuing such an ambitious hypotheses. 
+
+My Signature Work thesis involved extensive research that blended computational modeling with anthropological inquiry. I developed a hybrid self-supervised contrastive learning model capable of analyzing visual similarities between the Indus Valley script, Bronze Age West Asian signaries, and TYC pictographic systems. I demonstrated that TYC scripts exhibit a six-fold higher visual similarity to the Indus script than to contemporaneous Proto-Cuneiform or Proto-Elamite systems, combined with a rigorous anthropological analysis establishing a potential path and reasoning for transmission and further computational testing.
+
+The interdisciplinary nature of my Signature Work brought me to conduct field studies in Northeastern Yunnan, Sichuan, and the prehistoric cave sites of the Tibet Autonomous Region, where I engaged firsthand with the material culture and geographic context of the TYC region. I also had the privilege of speaking with scholars across multiple disciplines (and languages!), as well as working with Dongba research institutes in Lijiang. The experience of immersing myself so fully in both the literature and the field was transformative; I gained a comprehensive understanding of the subject that went beyond literature review that allowed me to intuitively contextualize my work.
+
+What was perhaps most empowering about my Signature Work was the sense of discovery it fostered. I began with a well-researched, yet unexplored, hypothesis, and through robust methodology, I was able to generate results that offered new insights into ancient cultural networks. The process of developing a hypothesis, testing it computationally, and arriving at consistent findings gave me a sense of confidence in both my abilities and my intellectual instincts. This confidence has carried forward as I prepare to present my work at the Computer Applications and Quantitative Methods in Archaeology (CAA) Conference in Athens in May 2025.
+
+Through my coursework, capstone, and Signature Work project, I have found a unique intersection between the humanities and computational analysis that I am deeply passionate about. My thesis represents not just the culmination of my studies, but also the beginning of a future in which I hope to continue exploring how technology can deepen our understanding of the human past.
+
+\appendix
+\chapter{Additional Material}
+
+\section{Data Acquisition}
+\label{app: data-acq}
+\noindent\hspace{1cm}
+All data processing code used in this project can be located in \texttt{data/datasets.ipynb} (except Old-Naxi, which can be found in \texttt{data/old\_naxi.ipynb}) within the project GitHub repository. All datasets were saved to Google Drive for streamlined access from Google Colab environments.
+
+\subsection*{Indus Dataset}
+The Indus script dataset was retrieved from the \textit{Interactive Corpus of Indus Texts} (ICIT) \cite{wells_interactive_2024} hosted at \url{https://www.indus.epigraphica.de/}. The complete HTML corpus was downloaded via authenticated requests and parsed using \texttt{BeautifulSoup} (Appendix \ref{app: packages}). Sign images were extracted from the ICIT site and downloaded programmatically using Python’s \texttt{requests} library (Appendix \ref{app: packages}), authenticated via HTTP Basic Authentication . The dataset includes the full corpus of Indus signs, saved as \texttt{.jpg} images for use in visual similarity analysis.
+
+\subsection*{Proto-Cuneiform Dataset}
+The Proto-Cuneiform dataset was sourced from the \texttt{proto-cuneiform\_signs} GitHub repository maintained by the Cuneiform Digital Library Initiative (CDLI) \cite{noauthor_cdli-ghproto-cuneiform_signs_2024}. The dataset includes \texttt{.jpg} images of Proto-Cuneiform signs located in the \texttt{archsigns} directory. All images are licensed under CC BY, in accordance with Robert K. Englund’s permissions. Files were cloned and extracted for analysis in this project.
+
+\subsection*{Proto-Elamite Dataset}
+The Proto-Elamite dataset was obtained from the \texttt{pe-decipher-toolkit} GitHub repository \cite{noauthor_sfu-natlangpe-decipher-toolkit_2023}, released in connection with Born et al. \cite{born_sign_2019}. The dataset includes categorized \texttt{.png} images of Proto-Elamite signs from the \texttt{PE\_mainforms} and \texttt{PE\_num} directories. This resource was developed to support computational decipherment research and accompanies the paper on sign clustering and topic extraction in Proto-Elamite.
+
+\subsection*{New Naxi Dongba Dataset}
+The New Naxi Dongba dataset was generated from the BabelStone Naxi LLC font \cite{noauthor_babelstone_nodate}, containing 2,162 glyphs derived from Lǐ Líncàn’s \textit{Naxi Pictographic Symbols Dictionary} \cite{li_dictionary_1944}. Glyph images corresponding to Unicode points \texttt{U+E000} to \texttt{U+E849} were rendered as \texttt{.png} files at 224$\times$224 resolution using the Python \texttt{Pillow} library (Appendix \ref{app: packages}). This dataset was created specifically for this project to support pictographic analysis.
+
+\subsection*{Old Naxi Dongba Dataset}
+The Old Naxi Dongba dataset was extracted from the VGTS (Versatile Glyph Text Spotting) GitHub repository \cite{wenbo_infinite-hwbvgts_2024}. This dataset includes Dongba Buddhist Hieroglyphic manuscripts (DBH), with 3,633 annotated bounding boxes across 253 categories. Glyphs were cropped from annotated manuscripts and additional support images were processed for one-shot learning tasks. Data includes hand-written character samples for training and evaluation.
+
+\subsection*{Classical Yi Dataset}
+The Classical Yi dataset was sourced from the \textit{Ancient Yi Script Handwriting Sample Repository}, published in \textit{Scientific Data} \cite{liu_ancient_2024}. The dataset includes 427,939 handwritten samples across 2,922 classes, collected from 310 participants. Images were downloaded from the Science Data Bank repository and organized by category. The dataset covers a wide variety of handwriting styles and is used as a benchmark for handwritten character recognition.
+
+\subsection*{Ba-Shu Dataset}
+The Ba-Shu dataset was compiled from images sourced from the Sichuan Museum \cite{sichuan_museum_ba-shu_2023} and the Sanxingdui Museum \cite{sanxingdui_museum_sanxingdui_2023}, viewable in \textit{Presentation and Translation of the Linguistic Landscape in the Sichuan Museum and the Spread of the Ba-Shu Culture from the Perspective of Cultural Communication} \cite{zhang_presentation_2023}. 
+
+\section{Packages Used}
+\label{app: packages}
+\noindent\hspace{1cm}
+
+The complete implementation is available in the GitHub repository.
+
+\subsection*{System and File Management}
+\begin{itemize}
+    \item \href{https://docs.python.org/3/library/os.html}{\texttt{os}}, \href{https://docs.python.org/3/library/shutil.html}{\texttt{shutil}}, \href{https://docs.python.org/3/library/glob.html}{\texttt{glob}}, \href{https://docs.python.org/3/library/zipfile.html}{\texttt{zipfile}}, \href{https://docs.python.org/3/library/pathlib.html}{\texttt{pathlib}}, \href{https://docs.python.org/3/library/pickle.html}{\texttt{pickle}} \\
+    For file operations, directory management, and handling archives.
+    
+    \item \href{https://docs.python.org/3/library/logging.html}{\texttt{logging}}, \href{https://docs.python.org/3/library/warnings.html}{\texttt{warnings}}, \href{https://docs.python.org/3/library/traceback.html}{\texttt{traceback}}, \href{https://docs.python.org/3/library/datetime.html}{\texttt{datetime}} \\
+    For system logging, error handling, and timestamping processes.
+\end{itemize}
+
+\subsection*{Data Science and Numerical Computing}
+\begin{itemize}
+    \item \href{https://numpy.org/}{\texttt{numpy}}, \href{https://pandas.pydata.org/}{\texttt{pandas}} \\
+    For numerical operations, data manipulation, and tabular data processing.
+    
+    \item \href{https://seaborn.pydata.org/}{\texttt{seaborn}}, \href{https://matplotlib.org/}{\texttt{matplotlib}} \\
+    For data visualization and plotting.
+\end{itemize}
+
+\subsection*{Image Processing}
+\begin{itemize}
+    \item \href{https://github.com/python-pillow/Pillow/}{\texttt{Pillow (PIL)}}, \href{https://opencv.org/}{\texttt{opencv-python (cv2)}} \\
+    For image loading, preprocessing, and augmentation.
+    
+    \item \href{https://scikit-image.org/}{\texttt{skimage}} \\
+    For image filtering and additional processing.
+    
+    \item \href{https://github.com/fonttools/fonttools}{\texttt{fontTools}} \\
+    For working with font files and glyph extraction.
+\end{itemize}
+
+\subsection*{Machine Learning and Deep Learning}
+\begin{itemize}
+    \item \href{https://pytorch.org/}{\texttt{torch}}, \href{https://pytorch.org/vision/stable/index.html}{\texttt{torchvision}} \\
+    For building and training neural networks on GPU.
+    
+    \item \href{https://github.com/huggingface/pytorch-image-models}{\texttt{timm}}, \href{https://huggingface.co/docs/transformers/index}{\texttt{transformers}} \\
+    Pretrained models and advanced architectures for vision and NLP tasks.
+\end{itemize}
+
+\subsection*{Dimensionality Reduction and Clustering}
+\begin{itemize}
+    \item \href{https://scikit-learn.org/stable/modules/generated/sklearn.manifold.TSNE.html}{\texttt{sklearn.manifold.TSNE}}, \href{https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html}{\texttt{sklearn.decomposition.PCA}} \\
+    For visualizing high-dimensional data.
+    
+    \item \href{https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html}{\texttt{KMeans}}, \href{https://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.cosine_similarity.html}{\texttt{cosine\_similarity}}, \href{https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html}{\texttt{StandardScaler}} \\
+    For unsupervised clustering and similarity analysis.
+\end{itemize}
+
+\subsection*{Evaluation Metrics and Analysis}
+\begin{itemize}
+    \item \href{https://scikit-learn.org/stable/modules/generated/sklearn.metrics.confusion_matrix.html}{\texttt{confusion\_matrix}}, \href{https://scikit-learn.org/stable/modules/generated/sklearn.metrics.classification_report.html}{\texttt{classification\_report}} \\
+    For evaluating model classification performance.
+\end{itemize}
+
+\subsection*{Hierarchical Clustering and Statistical Analysis}
+\begin{itemize}
+    \item \href{https://docs.scipy.org/doc/scipy/reference/cluster.hierarchy.html}{\texttt{scipy.cluster.hierarchy}}, \href{https://docs.scipy.org/doc/scipy/reference/spatial.distance.html}{\texttt{scipy.spatial.distance}} \\
+    For hierarchical clustering and distance computation.
+    
+    \item \href{https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.ttest_ind.html}{\texttt{scipy.stats.ttest\_ind}} \\
+    For statistical significance testing.
+\end{itemize}
+
+\subsection*{Graph Theory and Network Analysis}
+\begin{itemize}
+    \item \href{https://networkx.org/}{\texttt{networkx}} \\
+    For network-based graph analysis and visualization.
+\end{itemize}
+
+\subsection*{Web Scraping and Requests}
+\begin{itemize}
+    \item \href{https://requests.readthedocs.io/en/latest/}{\texttt{requests}}, \href{https://www.crummy.com/software/BeautifulSoup/bs4/doc/}{\texttt{BeautifulSoup (bs4)}} \\
+    For accessing web resources and parsing HTML/XML data.
+\end{itemize}
+
+\subsection*{Progress Tracking and Utilities}
+\begin{itemize}
+    \item \href{https://tqdm.github.io/}{\texttt{tqdm}} \\
+    For tracking progress of loops and operations.
+\end{itemize}
+
+\subsection*{Google Colab Specific}
+\begin{itemize}
+    \item \href{https://colab.research.google.com/notebooks/io.ipynb}{\texttt{google.colab.drive}}, \href{https://colab.research.google.com/notebooks/io.ipynb}{\texttt{google.colab.files}} \\
+    For mounting Google Drive and managing file uploads/downloads within Colab.
+\end{itemize}
+
+\subsection*{Hardware Acceleration}
+\begin{itemize}
+    \item \href{https://pytorch.org/docs/stable/cuda.html}{\texttt{torch.device("cuda")}} \\
+    For leveraging GPU acceleration when available.
+\end{itemize}
+
+\vspace{0.5cm}
+All packages were installed using \texttt{pip} within the Colab environment. CUDA acceleration was used for deep learning tasks when available.
+
+\clearpage
+\section{Ensemble t-SNE Visualizations}
+\label{app: t-sne}
+
+
+\begin{figure}[H] 
+    \centering
+    \includegraphics[width=0.8\linewidth]{Visualizations/t-SNE/Indus/ensemble_tsne.pdf}
+     \caption*{Indus Ensemble t-SNE}
+\end{figure}
+
+\begin{figure}[H] 
+    \centering
+    \includegraphics[width=1\linewidth]{Visualizations/t-SNE/Indus/model_comparison_grid.pdf}
+     \caption*{Indus Ensemble Model t-SNE Comparison Grid}
+\end{figure}
+
+\begin{figure}[H] 
+    \centering
+    \includegraphics[width=0.8\linewidth]{Visualizations/t-SNE/Proto-Cuneiform/ensemble_tsne.pdf}
+     \caption*{Proto-Cuneiform Ensemble t-SNE}
+\end{figure}
+
+\begin{figure}[H] 
+    \centering
+    \includegraphics[width=1\linewidth]{Visualizations/t-SNE/Proto-Cuneiform/model_comparison_grid.pdf}
+     \caption*{Proto-Cuneiform Ensemble Model t-SNE Comparison Grid}
+\end{figure}
+
+
+\begin{figure}[H] 
+    \centering
+    \includegraphics[width=0.8\linewidth]{Visualizations/t-SNE/Proto-Elamite/ensemble_tsne.pdf}
+    \caption*{Proto-Elamite Ensemble t-SNE}
+\end{figure}
+
+\begin{figure}[H] 
+    \centering
+    \includegraphics[width=1\linewidth]{Visualizations/t-SNE/Proto-Elamite/model_comparison_grid.pdf}
+    \caption*{Proto-Elamite Ensemble Model t-SNE Comparison Grid}
+\end{figure}
+
+
+\clearpage
+\section{Ensemble PCA Visualization}
+\label{app: pca}
+
+\begin{figure}[H] 
+    \centering
+    \includegraphics[width=0.8\linewidth]{Visualizations/PCA/Indus/ensemble_pca.pdf}
+     \caption*{Indus Ensemble PCA}
+\end{figure}
+
+\begin{figure}[H] 
+    \centering
+    \includegraphics[width=0.8\linewidth]{Visualizations/PCA/Indus/ensemble_pca_3d.pdf}
+     \caption*{Indus Ensemble 3D PCA}
+\end{figure}
+
+\begin{figure}[H] 
+    \centering
+    \includegraphics[width=1\linewidth]{Visualizations/PCA/Indus/model_comparison_grid_pca.pdf}
+     \caption*{Indus Ensemble Model PCA Comparison Grid}
+\end{figure}
+
+
+\begin{figure}[H] 
+    \centering
+    \includegraphics[width=0.8\linewidth]{Visualizations/PCA/Proto-Cuneiform/ensemble_pca.pdf}
+     \caption*{Proto-Cuneiform Ensemble PCA}
+\end{figure}
+
+\begin{figure}[H] 
+    \centering
+    \includegraphics[width=0.8\linewidth]{Visualizations/PCA/Proto-Cuneiform/ensemble_pca_3d.pdf}
+     \caption*{Proto-Cuneiform Ensemble 3D PCA}
+\end{figure}
+
+\begin{figure}[H] 
+    \centering
+    \includegraphics[width=1\linewidth]{Visualizations/PCA/Proto-Cuneiform/model_comparison_grid_pca.pdf}
+     \caption*{Proto-Cuneiform Ensemble Model PCA Comparison Grid}
+\end{figure}
+
+\begin{figure}[H] 
+    \centering
+    \includegraphics[width=0.8\linewidth]{Visualizations/PCA/Proto-Elamite/ensemble_pca.pdf}
+     \caption*{Proto-Elamite Ensemble PCA}
+\end{figure}
+
+\begin{figure}[H] 
+    \centering
+    \includegraphics[width=0.8\linewidth]{Visualizations/PCA/Proto-Elamite/ensemble_pca_3d.pdf}
+     \caption*{Proto-Elamite Ensemble 3D PCA}
+\end{figure}
+
+\begin{figure}[H] 
+    \centering
+    \includegraphics[width=1\linewidth]{Visualizations/PCA/Proto-Elamite/model_comparison_grid_pca.pdf}
+     \caption*{Proto-Elamite Ensemble Model PCA Comparison Grid}
+\end{figure}
+
+\clearpage
+\section{Ensemble Hierarchical Clustering}
+\label{app: dendro}
+
+\begin{figure}[H] 
+    \centering
+    \includegraphics[width=1\linewidth]{Visualizations/Dendrograms/Indus/ensemble_dendrogram_ward.pdf}
+     \caption*{Indus Ensemble Ward Linkage Dendrogram}
+\end{figure}
+
+\begin{figure}[H] 
+    \centering
+    \includegraphics[width=1\linewidth]{Visualizations/Dendrograms/Indus/ensemble_dendrogram_single.pdf}
+     \caption*{Indus Ensemble Single Linkage Dendrogram}
+\end{figure}
+
+\begin{figure}[H] 
+    \centering
+    \includegraphics[width=1\linewidth]{Visualizations/Dendrograms/Indus/ensemble_dendrogram_complete.pdf}
+     \caption*{Indus Ensemble Complete Linkage Dendrogram}
+\end{figure}
+
+\begin{figure}[H] 
+    \centering
+    \includegraphics[width=1\linewidth]{Visualizations/Dendrograms/Indus/ensemble_dendrogram_average.pdf}
+     \caption*{Indus Ensemble Average Linkage Dendrogram}
+\end{figure}
+
+\begin{figure}[H] 
+    \centering
+    \includegraphics[width=1\linewidth]{Visualizations/Dendrograms/Proto-Cuneiform/ensemble_dendrogram_ward.pdf}
+     \caption*{Proto-Cuneiform Ensemble Ward Linkage Dendrogram}
+\end{figure}
+
+\begin{figure}[H] 
+    \centering
+    \includegraphics[width=1\linewidth]{Visualizations/Dendrograms/Proto-Cuneiform/ensemble_dendrogram_single.pdf}
+     \caption*{Proto-Cuneiform Ensemble Single Linkage Dendrogram}
+\end{figure}
+
+\begin{figure}[H] 
+    \centering
+    \includegraphics[width=1\linewidth]{Visualizations/Dendrograms/Proto-Cuneiform/ensemble_dendrogram_complete.pdf}
+     \caption*{Proto-Cuneiform Ensemble Complete Linkage Dendrogram}
+\end{figure}
+
+\begin{figure}[H] 
+    \centering
+    \includegraphics[width=1\linewidth]{Visualizations/Dendrograms/Proto-Cuneiform/ensemble_dendrogram_average.pdf}
+     \caption*{Proto-Cuneiform Ensemble Average Linkage Dendrogram}
+\end{figure}
+
+
+\begin{figure}[H] 
+    \centering
+    \includegraphics[width=1\linewidth]{Visualizations/Dendrograms/Proto-Elamite/ensemble_dendrogram_ward.pdf}
+     \caption*{Proto-Elamite Ensemble Ward Linkage Dendrogram}
+\end{figure}
+
+\begin{figure}[H] 
+    \centering
+    \includegraphics[width=1\linewidth]{Visualizations/Dendrograms/Proto-Elamite/ensemble_dendrogram_single.pdf}
+     \caption*{Proto-Elamite Ensemble Single Linkage Dendrogram}
+\end{figure}
+
+\begin{figure}[H] 
+    \centering
+    \includegraphics[width=1\linewidth]{Visualizations/Dendrograms/Proto-Elamite/ensemble_dendrogram_complete.pdf}
+     \caption*{Proto-Elamite Ensemble Complete Linkage Dendrogram}
+\end{figure}
+
+\begin{figure}[H] 
+    \centering
+    \includegraphics[width=1\linewidth]{Visualizations/Dendrograms/Proto-Elamite/ensemble_dendrogram_average.pdf}
+     \caption*{Proto-Elamite Ensemble Average Linkage Dendrogram}
+\end{figure}
+
+\section{Clustering Heatmaps}
+\label{app: heatmaps}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{Visualizations/Clustered Heatmaps/Proto-Cuneiform/ensemble_clustered_similarity_ward.pdf}
+     \caption*{Proto-Cuneiform Ward Similarity Heatmap}
+\end{figure}
+ \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{Visualizations/Clustered Heatmaps/Proto-Cuneiform/ensemble_clustered_similarity_single.pdf}
+     \caption*{Proto-Cuneiform Single Similarity Heatmap}
+\end{figure}
+ \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{Visualizations/Clustered Heatmaps/Proto-Cuneiform/ensemble_clustered_similarity_complete.pdf}
+     \caption*{Proto-Cuneiform Complete Similarity Heatmap}
+\end{figure}
+ \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{Visualizations/Clustered Heatmaps/Proto-Cuneiform/ensemble_clustered_similarity_average.pdf}
+     \caption*{Proto-Cuneiform Average Similarity Heatmap}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{Visualizations/Clustered Heatmaps/Proto-Elamite/ensemble_clustered_similarity_ward.pdf}
+     \caption*{Proto-Elamite Ward Similarity Heatmap}
+\end{figure}
+ \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{Visualizations/Clustered Heatmaps/Proto-Elamite/ensemble_clustered_similarity_single.pdf}
+     \caption*{Proto-Elamite Single Similarity Heatmap}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{Visualizations/Clustered Heatmaps/Proto-Elamite/ensemble_clustered_similarity_complete.pdf}
+     \caption*{Proto-Elamite Complete Similarity Heatmap}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{Visualizations/Clustered Heatmaps/Proto-Elamite/ensemble_clustered_similarity_average.pdf}
+     \caption*{Proto-Elamite Average Similarity Heatmap}
+\end{figure}
+
+ \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{Visualizations/Clustered Heatmaps/Indus/ensemble_clustered_similarity_ward.pdf}
+     \caption*{Indus Ward Similarity Heatmap}
+\end{figure}
+ \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{Visualizations/Clustered Heatmaps/Indus/ensemble_clustered_similarity_single.pdf}
+     \caption*{Indus Single Similarity Heatmap}
+\end{figure}
+ \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{Visualizations/Clustered Heatmaps/Indus/ensemble_clustered_similarity_complete.pdf}
+     \caption*{Indus Complete Similarity Heatmap}
+\end{figure}
+ \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{Visualizations/Clustered Heatmaps/Indus/ensemble_clustered_similarity_average.pdf}
+     \caption*{Indus Average Similarity Heatmap}
+\end{figure}
+
+\section{Cosine Similarity Plots}
+\label{app: similarity}
+
+ \begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{Visualizations/Cosine Similarity/indus_ensemble_similarities.pdf}
+     \caption{Indus Ensemble Cosine Similarity Plot}
+\end{figure}
+
+ \begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{Visualizations/Cosine Similarity/proto-cuneiform_ensemble_similarities.pdf}
+     \caption{Proto-Cuneiform Ensemble Cosine Similarity Plot}
+\end{figure}
+
+ \begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{Visualizations/Cosine Similarity/proto-elamite_ensemble_similarities.pdf}
+     \caption{Proto-Elamite Ensemble Cosine Similarity Plot}
+\end{figure}
+
+\section{Grad-CAM Heatmaps}
+\label{app: gradcam}
+
+\subsection{Indus Script}
+ \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{Visualizations/Grad-CAM/Indus/gradcam_35_combined.pdf}
+\end{figure}
+
+ \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{Visualizations/Grad-CAM/Indus/gradcam_142_combined.pdf}
+\end{figure}
+
+ \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{Visualizations/Grad-CAM/Indus/gradcam_321_combined.pdf}
+\end{figure}
+
+ \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{Visualizations/Grad-CAM/Indus/gradcam_363_combined.pdf}
+\end{figure}
+
+ \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{Visualizations/Grad-CAM/Indus/gradcam_874_combined.pdf}
+\end{figure}
+
+\subsection{Proto-Cuneiform}
+ \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{Visualizations/Grad-CAM/Proto-Cuneiform/gradcam__3(N58).UR3~b1__combined.pdf}
+\end{figure}
+
+ \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{Visualizations/Grad-CAM/Proto-Cuneiform/gradcam__SZU2.E2~b__combined.pdf}
+\end{figure}
+
+ \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{Visualizations/Grad-CAM/Proto-Cuneiform/gradcam_1(N52)_combined.pdf}
+\end{figure}
+
+ \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{Visualizations/Grad-CAM/Proto-Cuneiform/gradcam_MUNSZUB~b_combined.pdf}
+\end{figure}
+
+ \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{Visualizations/Grad-CAM/Proto-Cuneiform/gradcam_ZATU772_combined.pdf}
+\end{figure}
+
+\subsection{Proto-Elamite}
+ \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{Visualizations/Grad-CAM/Proto-Elamite/gradcam_M111-N_combined.pdf}
+\end{figure}
+ \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{Visualizations/Grad-CAM/Proto-Elamite/gradcam_M201+M377_combined.pdf}
+\end{figure}
+ \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{Visualizations/Grad-CAM/Proto-Elamite/gradcam_M248-CA_combined.pdf}
+\end{figure}
+ \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{Visualizations/Grad-CAM/Proto-Elamite/gradcam_M304-A_combined.pdf}
+\end{figure}
+ \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{Visualizations/Grad-CAM/Proto-Elamite/gradcam_M317+M265-B_combined.pdf}
+\end{figure}
+
+\subsection{New Dongba}
+ \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{Visualizations/Grad-CAM/Naxi-Dongba/gradcam_dongba_E0F8_combined.pdf}
+\end{figure}
+ \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{Visualizations/Grad-CAM/Naxi-Dongba/gradcam_dongba_E4C8_combined.pdf}
+\end{figure}
+ \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{Visualizations/Grad-CAM/Naxi-Dongba/gradcam_dongba_E07D_combined.pdf}
+\end{figure}
+ \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{Visualizations/Grad-CAM/Naxi-Dongba/gradcam_dongba_E7F4_combined.pdf}
+\end{figure}
+ \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{Visualizations/Grad-CAM/Naxi-Dongba/gradcam_dongba_E62A_combined.pdf}
+\end{figure}
+
+\subsection{Old Dongba}
+ \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{Visualizations/Grad-CAM/Old-Naxi/gradcam_2_class2_box133_combined.pdf}
+\end{figure}
+ \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{Visualizations/Grad-CAM/Old-Naxi/gradcam_3_class61_box256_combined.pdf}
+\end{figure}
+ \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{Visualizations/Grad-CAM/Old-Naxi/gradcam_14_class105_box1232_combined.pdf}
+\end{figure}
+ \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{Visualizations/Grad-CAM/Old-Naxi/gradcam_19_class187_box1586_combined.pdf}
+\end{figure}
+ \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{Visualizations/Grad-CAM/Old-Naxi/gradcam_24_class29_box2044_combined.pdf}
+\end{figure}
+
+\label{app: rock-art}
+ \begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{Images/tibetan_rock_letters.jpg}
+     \caption[Ancient Tibetan Rock Writings]{Early characters depicted in a cave near Namtso Lake, Tibet. Photo taken by author on December 31, 2024.}
+\end{figure}
+
+ \begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{Images/tibetan_rock_yak.jpg}
+     \caption[Black Yak Tibetan Cave Pictograph]]{Black yak on the walls of a cave near Namtso Lake, Tibet. Photo taken by author on December 31, 2024.}
+\end{figure}
+
+\section{Indus Scale}
+\label{app: scale}
+ \begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{Images/indus_scale.jpg}
+     \caption{Fragmented scale measure from Mohenjodaro \cite{guha_history_2022, mackay_household_1938}.}
+\end{figure}
+
+\section{Statistical Tests}
+\label{app: scale}
+The following pages contain the results of our statistical relationship analysis, including our t-tests and Cohen's d evaluations.
+
+\begin{landscape}
+\begin{scriptsize}
+
+% Start of longtable
+\begin{longtable}{|l|l|l|r|r|r|r|r|r|l|c|l|}
+ \caption{Statistical Tests Summary Output} \\
+\hline
+\textbf{Comparison Script} & \textbf{Model} & \textbf{Test} & \textbf{Mean 1} & \textbf{Mean 2} & \textbf{Difference} & \textbf{T-statistic} & \textbf{P-value} & \textbf{Cohen's d} & \textbf{Effect Size} & \textbf{Significant} & \textbf{Better Match} \\
+\hline
+\endfirsthead
+
+% Header for continuation pages
+\multicolumn{12}{c}%
+{{\bfseries Table \thetable\ Continued from previous page}} \\
+\hline
+\textbf{Comparison Script} & \textbf{Model} & \textbf{Test} & \textbf{Mean 1} & \textbf{Mean 2} & \textbf{Difference} & \textbf{T-statistic} & \textbf{P-value} & \textbf{Cohen's d} & \textbf{Effect Size} & \textbf{Significant} & \textbf{Better Match} \\
+\hline
+\endhead
+
+% Footer for all but last page
+\hline \multicolumn{12}{r}{{Continued on next page}} \\
+\endfoot
+
+% Footer for last page
+\hline
+\endlastfoot
+
+TYC & model\_0 & Indus\_vs\_Proto-Cuneiform & 0.61 & 0.07 & 0.54 & 3430.39 & 0.00 & 9.70 & large & Yes & Indus \\ \hline
+TYC & model\_0 & Indus\_vs\_Proto-Elamite & 0.61 & 0.10 & 0.51 & 3143.15 & 0.00 & 8.89 & large & Yes & Indus \\ \hline
+TYC & model\_0 & Proto-Cuneiform\_vs\_Proto-Elamite & 0.07 & 0.10 & -0.03 & -412.76 & 0.00 & -1.17 & large & Yes & Proto-Elamite \\ \hline
+TYC & model\_1 & Indus\_vs\_Proto-Cuneiform & 0.61 & 0.07 & 0.54 & 2362.56 & 0.00 & 6.68 & large & Yes & Indus \\ \hline
+TYC & model\_1 & Indus\_vs\_Proto-Elamite & 0.61 & 0.07 & 0.54 & 2328.76 & 0.00 & 6.59 & large & Yes & Indus \\ \hline
+TYC & model\_1 & Proto-Cuneiform\_vs\_Proto-Elamite & 0.07 & 0.07 & 0.00 & 1.77 & 0.08 & 0.01 & negligible & No & Proto-Cuneiform \\ \hline
+TYC & model\_2 & Indus\_vs\_Proto-Cuneiform & 0.63 & 0.07 & 0.56 & 2720.97 & 0.00 & 7.70 & large & Yes & Indus \\ \hline
+TYC & model\_2 & Indus\_vs\_Proto-Elamite & 0.63 & 0.08 & 0.55 & 2696.50 & 0.00 & 7.63 & large & Yes & Indus \\ \hline
+TYC & model\_2 & Proto-Cuneiform\_vs\_Proto-Elamite & 0.07 & 0.08 & -0.01 & -117.34 & 0.00 & -0.33 & small & Yes & Proto-Elamite \\ \hline
+TYC & model\_3 & Indus\_vs\_Proto-Cuneiform & 0.65 & 0.07 & 0.58 & 2331.90 & 0.00 & 6.60 & large & Yes & Indus \\ \hline
+TYC & model\_3 & Indus\_vs\_Proto-Elamite & 0.65 & 0.07 & 0.58 & 2385.25 & 0.00 & 6.75 & large & Yes & Indus \\ \hline
+TYC & model\_3 & Proto-Cuneiform\_vs\_Proto-Elamite & 0.07 & 0.07 & 0.00 & 4.93 & 0.00 & 0.01 & negligible & Yes & Proto-Cuneiform \\ \hline
+TYC & model\_4 & Indus\_vs\_Proto-Cuneiform & 0.67 & 0.23 & 0.44 & 1868.95 & 0.00 & 5.29 & large & Yes & Indus \\ \hline
+TYC & model\_4 & Indus\_vs\_Proto-Elamite & 0.66 & 0.07 & 0.59 & 2670.99 & 0.00 & 7.55 & large & Yes & Indus \\ \hline
+TYC & model\_4 & Proto-Cuneiform\_vs\_Proto-Elamite & 0.23 & 0.07 & 0.16 & 1391.71 & 0.00 & 3.94 & large & Yes & Proto-Cuneiform \\ \hline
+Naxi-Dongba & model\_0 & Indus\_vs\_Proto-Cuneiform & 0.58 & 0.07 & 0.51 & 3428.45 & 0.00 & 9.70 & large & Yes & Indus \\ \hline
+Naxi-Dongba & model\_0 & Indus\_vs\_Proto-Elamite & 0.58 & 0.08 & 0.50 & 3406.41 & 0.00 & 9.63 & large & Yes & Indus \\ \hline
+Naxi-Dongba & model\_0 & Proto-Cuneiform\_vs\_Proto-Elamite & 0.07 & 0.08 & -0.01 & -145.12 & 0.00 & -0.41 & small & Yes & Proto-Elamite \\ \hline
+Naxi-Dongba & model\_1 & Indus\_vs\_Proto-Cuneiform & 0.65 & 0.05 & 0.60 & 3414.21 & 0.00 & 9.66 & large & Yes & Indus \\ \hline
+Naxi-Dongba & model\_1 & Indus\_vs\_Proto-Elamite & 0.66 & 0.10 & 0.56 & 3329.02 & 0.00 & 9.42 & large & Yes & Indus \\ \hline
+Naxi-Dongba & model\_1 & Proto-Cuneiform\_vs\_Proto-Elamite & 0.06 & 0.10 & -0.04 & -523.73 & 0.00 & -1.48 & large & Yes & Proto-Elamite \\ \hline
+Naxi-Dongba & model\_2 & Indus\_vs\_Proto-Cuneiform & 0.58 & 0.05 & 0.53 & 2773.65 & 0.00 & 7.85 & large & Yes & Indus \\ \hline
+Naxi-Dongba & model\_2 & Indus\_vs\_Proto-Elamite & 0.58 & 0.10 & 0.48 & 2461.76 & 0.00 & 6.96 & large & Yes & Indus \\ \hline
+Naxi-Dongba & model\_2 & Proto-Cuneiform\_vs\_Proto-Elamite & 0.05 & 0.09 & -0.04 & -483.31 & 0.00 & -1.37 & large & Yes & Proto-Elamite \\ \hline
+Naxi-Dongba & model\_3 & Indus\_vs\_Proto-Cuneiform & 0.68 & 0.08 & 0.60 & 2883.93 & 0.00 & 8.16 & large & Yes & Indus \\ \hline
+Naxi-Dongba & model\_3 & Indus\_vs\_Proto-Elamite & 0.68 & 0.08 & 0.60 & 3069.56 & 0.00 & 8.68 & large & Yes & Indus \\ \hline
+Naxi-Dongba & model\_3 & Proto-Cuneiform\_vs\_Proto-Elamite & 0.08 & 0.08 & 0.00 & 59.78 & 0.00 & 0.17 & negligible & Yes & Proto-Cuneiform \\ \hline
+Naxi-Dongba & model\_4 & Indus\_vs\_Proto-Cuneiform & 0.68 & 0.28 & 0.40 & 1672.96 & 0.00 & 4.73 & large & Yes & Indus \\ \hline
+Naxi-Dongba & model\_4 & Indus\_vs\_Proto-Elamite & 0.68 & 0.08 & 0.59 & 2651.29 & 0.00 & 7.50 & large & Yes & Indus \\ \hline
+Naxi-Dongba & model\_4 & Proto-Cuneiform\_vs\_Proto-Elamite & 0.28 & 0.08 & 0.20 & 1789.15 & 0.00 & 5.06 & large & Yes & Proto-Cuneiform \\ \hline
+Old-Naxi & model\_0 & Indus\_vs\_Proto-Cuneiform & 0.62 & 0.07 & 0.55 & 3605.37 & 0.00 & 10.20 & large & Yes & Indus \\ \hline
+Old-Naxi & model\_0 & Indus\_vs\_Proto-Elamite & 0.62 & 0.10 & 0.52 & 3376.88 & 0.00 & 9.55 & large & Yes & Indus \\ \hline
+Old-Naxi & model\_0 & Proto-Cuneiform\_vs\_Proto-Elamite & 0.07 & 0.10 & -0.03 & -400.45 & 0.00 & -1.13 & large & Yes & Proto-Elamite \\ \hline
+Old-Naxi & model\_1 & Indus\_vs\_Proto-Cuneiform & 0.58 & 0.08 & 0.50 & 2096.98 & 0.00 & 5.93 & large & Yes & Indus \\ \hline
+Old-Naxi & model\_1 & Indus\_vs\_Proto-Elamite & 0.58 & 0.05 & 0.53 & 2358.66 & 0.00 & 6.67 & large & Yes & Indus \\ \hline
+Old-Naxi & model\_1 & Proto-Cuneiform\_vs\_Proto-Elamite & 0.07 & 0.05 & 0.02 & 263.14 & 0.00 & 0.74 & medium & Yes & Proto-Cuneiform \\ \hline
+Old-Naxi & model\_2 & Indus\_vs\_Proto-Cuneiform & 0.66 & 0.08 & 0.58 & 3075.61 & 0.00 & 8.70 & large & Yes & Indus \\ \hline
+Old-Naxi & model\_2 & Indus\_vs\_Proto-Elamite & 0.66 & 0.09 & 0.57 & 2944.56 & 0.00 & 8.33 & large & Yes & Indus \\ \hline
+Old-Naxi & model\_2 & Proto-Cuneiform\_vs\_Proto-Elamite & 0.07 & 0.08 & -0.01 & -118.30 & 0.00 & -0.33 & small & Yes & Proto-Elamite \\ \hline
+Old-Naxi & model\_3 & Indus\_vs\_Proto-Cuneiform & 0.61 & 0.08 & 0.52 & 2145.70 & 0.00 & 6.07 & large & Yes & Indus \\ \hline
+Old-Naxi & model\_3 & Indus\_vs\_Proto-Elamite & 0.59 & 0.07 & 0.52 & 2082.42 & 0.00 & 5.89 & large & Yes & Indus \\ \hline
+Old-Naxi & model\_3 & Proto-Cuneiform\_vs\_Proto-Elamite & 0.08 & 0.07 & 0.01 & 202.07 & 0.00 & 0.57 & medium & Yes & Proto-Cuneiform \\ \hline
+Old-Naxi & model\_4 & Indus\_vs\_Proto-Cuneiform & 0.65 & 0.22 & 0.42 & 1745.20 & 0.00 & 4.94 & large & Yes & Indus \\ \hline
+Old-Naxi & model\_4 & Indus\_vs\_Proto-Elamite & 0.65 & 0.07 & 0.58 & 2550.84 & 0.00 & 7.21 & large & Yes & Indus \\ \hline
+Old-Naxi & model\_4 & Proto-Cuneiform\_vs\_Proto-Elamite & 0.22 & 0.07 & 0.16 & 1430.05 & 0.00 & 4.04 & large & Yes & Proto-Cuneiform \\ \hline
+
+\end{longtable}
+\end{scriptsize}
+\end{landscape}
+
+
+
+\section{Similarity Summary}
+\label{app: sim-sum}
+\begin{table}[H]
+    \caption{Script Similarity Analysis Summary Output}
+    \centering
+    \begin{tabular}{|l|l|l|l|l|}
+    \hline
+        \textit{Script Similarity Analysis Summary} & ~ & ~ & ~ & ~ \\ \hline
+        Analysis Date: 2025-03-6 17:34:46 & ~ & ~ & ~ & ~ \\ \hline
+        ~ & ~ & ~ & ~ & ~ \\ \hline
+        \textbf{Indus Similarities} & ~ & ~ & ~ & ~ \\ \hline
+        ~ & ~ & ~ & ~ & ~ \\ \hline
+        Script & Mean Similarity & Std Dev & 95\% CI Lower & 95\% CI Upper \\ \hline
+        -------- & ---------------- & --------- & -------------- & ------------: \\ \hline
+        Indus & 1.0000 & 0.0000 & 1.0000 & 1.0000 \\ \hline
+        TYC & 0.9297 & 0.0145 & 0.9170 & 0.9424 \\ \hline
+        Proto-Cuneiform & 0.8873 & 0.0272 & 0.8634 & 0.9111 \\ \hline
+        Old-Naxi & 0.8777 & 0.0560 & 0.8287 & 0.9268 \\ \hline
+        Proto-Elamite & 0.8550 & 0.0420 & 0.8182 & 0.8918 \\ \hline
+        Naxi-Dongba & 0.8518 & 0.0179 & 0.8361 & 0.8675 \\ \hline
+        ~ & ~ & ~ & ~ & ~ \\ \hline
+        \textbf{Proto-Cuneiform Similarities} & ~ & ~ & ~ & ~ \\ \hline
+        ~ & ~ & ~ & ~ & ~ \\ \hline
+        Script & Mean Similarity & Std Dev & 95\% CI Lower & 95\% CI Upper \\ \hline
+        -------- & ---------------- & --------- & -------------- & ------------: \\ \hline
+        Proto-Cuneiform & 1.0000 & 0.0000 & 1.0000 & 1.0000 \\ \hline
+        Proto-Elamite & 0.9860 & 0.0067 & 0.9801 & 0.9919 \\ \hline
+        Naxi-Dongba & 0.9500 & 0.0177 & 0.9345 & 0.9655 \\ \hline
+        TYC & 0.9463 & 0.0300 & 0.9199 & 0.9726 \\ \hline
+        Indus & 0.9115 & 0.0201 & 0.8939 & 0.9292 \\ \hline
+        Old-Naxi & 0.8828 & 0.0821 & 0.8109 & 0.9548 \\ \hline
+        ~ & ~ & ~ & ~ & ~ \\ \hline
+        \textbf{Proto-Elamite Similarities} & ~ & ~ & ~ & ~ \\ \hline
+        ~ & ~ & ~ & ~ & ~ \\ \hline
+        Script & Mean Similarity & Std Dev & 95\% CI Lower & 95\% CI Upper \\ \hline
+        -------- & ---------------- & --------- & -------------- & ------------: \\ \hline
+        Proto-Elamite & 1.0000 & 0.0000 & 1.0000 & 1.0000 \\ \hline
+        Proto-Cuneiform & 0.9726 & 0.0144 & 0.9600 & 0.9852 \\ \hline
+        TYC & 0.9450 & 0.0173 & 0.9298 & 0.9601 \\ \hline
+        Old-Naxi & 0.9130 & 0.0276 & 0.8888 & 0.9372 \\ \hline
+        Naxi-Dongba & 0.9127 & 0.0252 & 0.8906 & 0.9347 \\ \hline
+        Indus & 0.9088 & 0.0182 & 0.8928 & 0.9247 \\ \hline
+    \end{tabular}
+\end{table}
+
+\newpage
+\section{Model Training Data}
+\label{app: model-train}
+
+
+\begin{table}[H]
+    \centering
+    \small
+     \caption{Indus Training Summary Output}
+    \begin{tabular}{|l|l|l|l|l|}
+    \hline
+        \textbf{model\_idx} & \textbf{seed} & \textbf{val\_loss} & \textbf{epoch} & \textbf{model\_path} \\ \hline
+        1 & 42 & 9.65621223449707 & 3 &  Indus\_ensemble\_1\_hybrid\_extractor\_best.pth \\ \hline
+        2 & 43 & 9.49264907836914 & 1 &  Indus\_ensemble\_2\_hybrid\_extractor\_best.pth \\ \hline
+        3 & 44 & 9.3032808303833 & 11 &  Indus\_ensemble\_3\_hybrid\_extractor\_best.pth \\ \hline
+        4 & 45 & 9.921699905395508 & 1 &  Indus\_ensemble\_4\_hybrid\_extractor\_best.pth \\ \hline
+        5 & 46 & 10.057604217529297 & 1 &  Indus\_ensemble\_5\_hybrid\_extractor\_best.pth \\ \hline
+    \end{tabular}
+\end{table}
+ \begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{Visualizations/Training/Indus/Indus_ensemble_1_hybrid_extractor_history.png}
+\end{figure}
+ \begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{Visualizations/Training/Indus/Indus_ensemble_2_hybrid_extractor_history.png}
+\end{figure}
+ \begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{Visualizations/Training/Indus/Indus_ensemble_3_hybrid_extractor_history.png}
+\end{figure}
+ \begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{Visualizations/Training/Indus/Indus_ensemble_4_hybrid_extractor_history.png}
+\end{figure}
+ \begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{Visualizations/Training/Indus/Indus_ensemble_5_hybrid_extractor_history.png}
+\end{figure}
+    
+\newpage 
+\begin{table}[H]
+    \centering
+    \footnotesize
+     \caption*{Proto-Cuneiform training summary.}
+    \begin{tabular}{|l|l|l|l|l|}
+    \hline
+        \textbf{model\_idx} & \textbf{seed} & \textbf{val\_loss} & \textbf{epoch} & \textbf{model\_path} \\ \hline
+        1 & 42 & 8.801242896488734 & 11 & Proto-Cuneiform\_ensemble\_1\_hybrid\_extractor\_best.pth \\ \hline
+        2 & 43 & 8.71736410685948 & 11 & Proto-Cuneiform\_ensemble\_2\_hybrid\_extractor\_best.pth \\ \hline
+        3 & 44 & 8.819251537322998 & 7 & Proto-Cuneiform\_ensemble\_3\_hybrid\_extractor\_best.pth \\ \hline
+        4 & 45 & 8.773778438568115 & 9 &  Proto-Cuneiform\_ensemble\_4\_hybrid\_extractor\_best.pth \\ \hline
+        5 & 46 & 9.27264860698155 & 1 &  Proto-Cuneiform\_ensemble\_5\_hybrid\_extractor\_best.pth \\ \hline
+    \end{tabular}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{Visualizations/Training/Proto-Cuneiform/Proto-Cuneiform_ensemble_1_hybrid_extractor_history.png}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{Visualizations/Training/Proto-Cuneiform/Proto-Cuneiform_ensemble_2_hybrid_extractor_history.png}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{Visualizations/Training/Proto-Cuneiform/Proto-Cuneiform_ensemble_3_hybrid_extractor_history.png}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{Visualizations/Training/Proto-Cuneiform/Proto-Cuneiform_ensemble_4_hybrid_extractor_history.png}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{Visualizations/Training/Proto-Cuneiform/Proto-Cuneiform_ensemble_5_hybrid_extractor_history.png}
+\end{figure}
+\newpage
+\begin{table}[H]
+    \centering
+    \small
+     \caption*{Proto-Elamite training summary.}
+    \begin{tabular}{|l|l|l|l|l|}
+    \hline
+        \textbf{model\_idx} & \textbf{seed} & \textbf{val\_loss} & \textbf{epoch} & \textbf{model\_path} \\ \hline
+        1 & 42 & 9.465515518188477 & 13 &  Proto-Elamite\_ensemble\_1\_hybrid\_extractor\_best.pth \\ \hline
+        2 & 43 & 10.229036331176758 & 5 &  Proto-Elamite\_ensemble\_2\_hybrid\_extractor\_best.pth \\ \hline
+        3 & 44 & 9.9594895362854 & 1 &  Proto-Elamite\_ensemble\_3\_hybrid\_extractor\_best.pth \\ \hline
+        4 & 45 & 9.304905700683594 & 12 &  Proto-Elamite\_ensemble\_4\_hybrid\_extractor\_best.pth \\ \hline
+        5 & 46 & 9.408125591278075 & 11 &  Proto-Elamite\_ensemble\_5\_hybrid\_extractor\_best.pth \\ \hline
+    \end{tabular}
+\end{table}
+ \begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{Visualizations/Training/Proto-Elamite/Proto-Elamite_ensemble_1_hybrid_extractor_history.png}
+\end{figure}
+ \begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{Visualizations/Training/Proto-Elamite/Proto-Elamite_ensemble_2_hybrid_extractor_history.png}
+\end{figure}
+ \begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{Visualizations/Training/Proto-Elamite/Proto-Elamite_ensemble_3_hybrid_extractor_history.png}
+\end{figure}
+ \begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{Visualizations/Training/Proto-Elamite/Proto-Elamite_ensemble_4_hybrid_extractor_history.png}
+\end{figure}
+ \begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{Visualizations/Training/Proto-Elamite/Proto-Elamite_ensemble_5_hybrid_extractor_history.png}
+\end{figure}
+
+\clearpage 
+\section{Complete Bibliography}
+\nocite{*}
+\printbibliography[heading=none, notcategory=cited]
+
+\end{document}

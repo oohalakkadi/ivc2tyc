@@ -52,9 +52,8 @@ ivc2tyc/
 ├── stability_analysis/                # Leave-out testing, t-tests, Cohen's d
 │
 ├── paper/                             # Final thesis paper and components
-│   ├── main.tex                       # Main LaTeX document
 │   ├── UndergraduateThesis.pdf        # Full PDF
-│   └── bibfile.bib                 # Bibliography file
+│   └── LaTeX/                         # Entire LaTeX document
 │
 ├── poster/                            # Thesis poster presentation materials
 │   ├── FinalPoster.jpg                # Final poster JPG
