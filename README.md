@@ -65,7 +65,7 @@ ivc2tyc/
 
 ### *Notebooks*
 
-The `notebooks` directory contains three Jupyter notebooks created in Google Colab:
+The `notebooks` directory contains three Jupyter notebooks:
 
 - `script_analysis.ipynb` – The main notebook containing the core analysis
 - `datasets.ipynb` – Used to load and preprocess data into Google Drive for access by `script_analysis.ipynb`
