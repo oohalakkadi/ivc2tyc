@@ -28,6 +28,71 @@ GitHub release (e.g. `v1.0.0`) so the code snapshot is archived automatically;
 then upload the large datasets/models/embeddings artifacts to the same Zenodo
 record manually (or as a new version).
 
+## Staging from Google Drive
+
+The large artifacts (trained models, embeddings, complete results) currently live
+in Google Drive, which served as the Colab working environment. That is fine as a
+**staging source**: download them from Drive, package them locally, and upload the
+packages to Zenodo (Zenodo — not Drive — is the archival source of record).
+
+Suggested local staging layout:
+
+```bash
+mkdir -p zenodo_package/models
+mkdir -p zenodo_package/embeddings
+mkdir -p zenodo_package/datasets
+mkdir -p zenodo_package/results
+# download the Drive artifacts into the matching folders, then package (below)
+```
+
+For the trained models, aim for the 15 ensemble checkpoints plus a short readme:
+
+```
+zenodo_package/models/
+├── Indus_ensemble_1.pth
+├── Indus_ensemble_2.pth
+├── ...
+├── Proto-Cuneiform_ensemble_1.pth
+├── ...
+├── Proto-Elamite_ensemble_5.pth
+└── README_models.md
+```
+
+Suggested `README_models.md` text:
+
+> These files contain the fifteen trained ensemble checkpoints used in the
+> PCI-recommended version of the study. Five independently trained models were
+> used for each target script: Indus, Proto-Cuneiform, and Proto-Elamite. The
+> checkpoints were originally generated in Google Colab and archived here for
+> long-term preservation.
+
+## Packaging strategy
+
+Avoid one monstrous zip unless everything is manageable. Package by component:
+
+```bash
+zip -r ivc2tyc-trained-models-v1.0.0.zip       zenodo_package/models
+zip -r ivc2tyc-embeddings-and-results-v1.0.0.zip zenodo_package/embeddings zenodo_package/results
+zip -r ivc2tyc-datasets-v1.0.0.zip             zenodo_package/datasets
+```
+
+If the models archive is too large, split it by target script — this is
+completely acceptable and often cleaner:
+
+```
+ivc2tyc-trained-models-indus-v1.0.0.zip
+ivc2tyc-trained-models-proto-cuneiform-v1.0.0.zip
+ivc2tyc-trained-models-proto-elamite-v1.0.0.zip
+```
+
+Before uploading the **datasets**, confirm whether any third-party dataset has
+reuse restrictions. The code can be MIT while the data retains its original
+terms. Safe wording for the Zenodo record:
+
+> Dataset components retain their original licenses and source attribution.
+> Newly generated derived outputs, figures, embeddings, and analysis results are
+> released under CC BY 4.0 unless otherwise noted.
+
 ## Recommended Zenodo metadata
 
 **Title**
