@@ -1,0 +1,36 @@
+cff-version: 1.2.0
+message: >-
+  If you use this work, please cite both the repository/data archive (the
+  dedicated code/data Zenodo DOI is forthcoming) and the PCI-recommended
+  article (https://doi.org/10.24072/pci.archaeo.100711).
+title: >-
+  Code and data for: Quantifying Structural Similarity between Indus and
+  Tibetan–Yi Scripts Using Hybrid Vision Embeddings
+authors:
+  - family-names: Lakkadi Reddy
+    given-names: Ooha
+type: software
+version: 1.0.0
+url: https://github.com/oohalakkadi/ivc2tyc
+repository-code: https://github.com/oohalakkadi/ivc2tyc
+license: MIT
+keywords:
+  - Indus script
+  - Tibetan–Yi Corridor
+  - Dongba script
+  - Ba–Shu symbols
+  - computational archaeology
+  - computer vision
+  - script comparison
+  - visual embeddings
+  - hybrid CNN Transformer
+references:
+  - type: article
+    title: >-
+      Quantifying Structural Similarity between Indus and Tibetan–Yi Scripts
+      Using Hybrid Vision Embeddings (PCI Archaeology recommendation)
+    authors:
+      - family-names: Lakkadi Reddy
+        given-names: Ooha
+    doi: 10.24072/pci.archaeo.100711
+    url: https://doi.org/10.24072/pci.archaeo.100711
