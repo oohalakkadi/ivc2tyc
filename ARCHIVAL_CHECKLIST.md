@@ -15,14 +15,14 @@ deposition, the PCI Archaeology recommendation, and CAA Proceedings publication.
 
 ## Zenodo code/data deposit
 
-- [ ] Code/data Zenodo deposit created (see `ZENODO_DEPOSIT_PLAN.md`)
-- [ ] Archive components uploaded
+- [x] Code/data Zenodo deposit created (see `ZENODO_DEPOSIT_PLAN.md`)
+- [x] Archive components uploaded
       (`ivc2tyc-code`, `ivc2tyc-datasets`, `ivc2tyc-trained-models`,
       `ivc2tyc-embeddings-and-results`, plus `README.md`, `LICENSE`, `CITATION.cff`)
-- [ ] Zenodo metadata set (title, creator, description, keywords, related identifiers, license)
-- [ ] Zenodo DOI minted
-- [ ] Zenodo DOI added back into `README.md` (replacing the "forthcoming" placeholder)
-- [ ] Zenodo DOI added to `CITATION.cff`
+- [x] Zenodo metadata set (title, creator, description, keywords, related identifiers, license)
+- [x] Zenodo DOI minted — `10.5281/zenodo.20755243`
+- [x] Zenodo DOI added back into `README.md` (replacing the "forthcoming" placeholder)
+- [x] Zenodo DOI added to `CITATION.cff`
 
 ## GitHub release
 

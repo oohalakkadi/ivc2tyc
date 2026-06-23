@@ -2,6 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/Code%20License-MIT-yellow.svg)](LICENSE)
 [![PCI Archaeology](https://img.shields.io/badge/PCI%20Archaeology-Recommended-brightgreen.svg)](https://doi.org/10.24072/pci.archaeo.100711)
+[![DOI](https://img.shields.io/badge/Zenodo-10.5281%2Fzenodo.20755243-blue.svg)](https://doi.org/10.5281/zenodo.20755243)
 
 This repository contains the code, notebooks, figures, and selected reproducibility
 materials for the study *Quantifying Structural Similarity between Indus and
@@ -115,11 +116,10 @@ checkpoints, extracted embeddings, and complete generated outputs — are intend
 to be archived in a dedicated Zenodo code/data deposit**, which is the intended
 long-term archival source of record for this project.
 
-- **Dedicated code/data Zenodo archive: forthcoming**
+- **Dedicated code/data Zenodo archive: https://doi.org/10.5281/zenodo.20755243**
 
-See [`ZENODO_DEPOSIT_PLAN.md`](ZENODO_DEPOSIT_PLAN.md) for the planned contents
-and metadata of that deposit. Once the Zenodo archive is created, its DOI will be
-added here.
+See [`ZENODO_DEPOSIT_PLAN.md`](ZENODO_DEPOSIT_PLAN.md) for the contents and
+metadata of that deposit.
 
 > **Note on Google Drive.** Google Drive was used only as a development and Colab
 > working environment during the project. It is *not* the archival source of
@@ -138,21 +138,20 @@ added here.
 
 ## Citation
 
-If you use this work, please cite **both** the repository/data archive (once the
-dedicated Zenodo DOI is available) **and** the PCI-recommended article.
-
-Until the dedicated code/data Zenodo DOI is minted, please cite the repository
-and the PCI Archaeology recommendation:
+If you use this work, please cite **both** the code/data archive **and** the
+PCI-recommended article:
 
 ```bibtex
 @software{LakkadiReddy_ivc2tyc,
-  author  = {Lakkadi Reddy, Ooha},
-  title   = {Code and data for: Quantifying Structural Similarity between
-             Indus and Tibetan--Yi Scripts Using Hybrid Vision Embeddings},
-  version = {1.0.0},
-  url     = {https://github.com/oohalakkadi/ivc2tyc},
-  note    = {Recommended by PCI Archaeology,
-             https://doi.org/10.24072/pci.archaeo.100711}
+  author    = {Lakkadi Reddy, Ooha},
+  title     = {Code and data for: Quantifying Structural Similarity between
+               Indus and Tibetan--Yi Scripts Using Hybrid Vision Embeddings},
+  version   = {1.0.0},
+  doi       = {10.5281/zenodo.20755243},
+  url       = {https://doi.org/10.5281/zenodo.20755243},
+  publisher = {Zenodo},
+  note      = {Recommended by PCI Archaeology,
+               https://doi.org/10.24072/pci.archaeo.100711}
 }
 ```
 

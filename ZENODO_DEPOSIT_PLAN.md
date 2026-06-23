@@ -1,13 +1,15 @@
 # Zenodo Deposit Plan
 
-This document describes the dedicated **code/data Zenodo deposit** to be created
-for this project. As of this writing, that deposit **does not yet exist** — this
-file is the preparation plan. Once the deposit is published, add its DOI to
-`README.md`, `CITATION.cff`, and the manuscript's data availability statement.
+This document describes the dedicated **code/data Zenodo deposit** for this
+project.
+
+> **Status: PUBLISHED.** The code/data archive is available at
+> **https://doi.org/10.5281/zenodo.20755243**. This file is retained as a record
+> of the deposit's intended contents, packaging, and metadata.
 
 > The preprint DOI `https://doi.org/10.5281/zenodo.20018003` refers to the
 > **preprint** only. It is **not** the code/data archive DOI. The code/data
-> archive is forthcoming and will receive its own DOI.
+> archive has its own DOI: **10.5281/zenodo.20755243**.
 
 ## Suggested archive components
 
@@ -161,9 +163,10 @@ inside the archives that spells out the mixed licensing above.
 
 ## After publishing
 
-1. Copy the minted DOI.
-2. Replace `Dedicated code/data Zenodo archive: forthcoming` in `README.md` with
-   the DOI (and add a DOI badge).
-3. Add the DOI to `CITATION.cff` (`doi:` and/or `identifiers:`).
-4. Update the manuscript's data availability statement.
-5. Tick the corresponding items in `ARCHIVAL_CHECKLIST.md`.
+Minted code/data DOI: **10.5281/zenodo.20755243**.
+
+1. [x] Copy the minted DOI.
+2. [x] Add the DOI (and a DOI badge) to `README.md`.
+3. [x] Add the DOI to `CITATION.cff` (`doi:` and `identifiers:`).
+4. [ ] Update the manuscript's data availability statement.
+5. [x] Tick the corresponding items in `ARCHIVAL_CHECKLIST.md`.
