@@ -1,1 +1,29 @@
+# OS files
 .DS_Store
+Thumbs.db
+
+# Python cache
+__pycache__/
+*.py[cod]
+*.egg-info/
+.ipynb_checkpoints/
+
+# Virtual environments
+.venv/
+venv/
+env/
+.env
+
+# Large model checkpoints / artifacts (archived on Zenodo, not tracked here)
+*.pth
+*.pt
+*.ckpt
+*.h5
+*.onnx
+*.npy
+*.npz
+
+# Temporary / output files
+*.log
+*.tmp
+*~

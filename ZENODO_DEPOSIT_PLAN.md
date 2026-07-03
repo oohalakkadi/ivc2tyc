@@ -1,0 +1,172 @@
+# Zenodo Deposit Plan
+
+This document describes the dedicated **code/data Zenodo deposit** for this
+project.
+
+> **Status: PUBLISHED.** The code/data archive is available at
+> **https://doi.org/10.5281/zenodo.20755243**. This file is retained as a record
+> of the deposit's intended contents, packaging, and metadata.
+
+> The preprint DOI `https://doi.org/10.5281/zenodo.20018003` refers to the
+> **preprint** only. It is **not** the code/data archive DOI. The code/data
+> archive has its own DOI: **10.5281/zenodo.20755243**.
+
+## Suggested archive components
+
+Upload the following to the Zenodo deposit:
+
+| File | Contents |
+|------|----------|
+| `ivc2tyc-code-v1.0.0.zip` | Notebooks and scripts (the runnable code). |
+| `ivc2tyc-datasets-v1.0.0.zip` | Script character image datasets (`datasets/`, `reference/`), with per-source attribution. |
+| `ivc2tyc-trained-models-v1.0.0.zip` | The 15 trained model checkpoints (`.pth`). |
+| `ivc2tyc-embeddings-and-results-v1.0.0.zip` | Extracted feature embeddings, similarity matrices, statistical outputs, and complete generated figures/outputs. |
+| `README.md` | This repository's README (top-level project documentation). |
+| `LICENSE` | MIT License for the code, with third-party/data licensing notes. |
+| `CITATION.cff` | Machine-readable citation metadata. |
+
+Tip: you can also enable the **GitHub–Zenodo integration** and create a tagged
+GitHub release (e.g. `v1.0.0`) so the code snapshot is archived automatically;
+then upload the large datasets/models/embeddings artifacts to the same Zenodo
+record manually (or as a new version).
+
+## Staging from Google Drive
+
+The large artifacts (trained models, embeddings, complete results) currently live
+in Google Drive, which served as the Colab working environment. That is fine as a
+**staging source**: download them from Drive, package them locally, and upload the
+packages to Zenodo (Zenodo — not Drive — is the archival source of record).
+
+Suggested local staging layout:
+
+```bash
+mkdir -p zenodo_package/models
+mkdir -p zenodo_package/embeddings
+mkdir -p zenodo_package/datasets
+mkdir -p zenodo_package/results
+# download the Drive artifacts into the matching folders, then package (below)
+```
+
+For the trained models, aim for the 15 ensemble checkpoints plus a short readme:
+
+```
+zenodo_package/models/
+├── Indus_ensemble_1.pth
+├── Indus_ensemble_2.pth
+├── ...
+├── Proto-Cuneiform_ensemble_1.pth
+├── ...
+├── Proto-Elamite_ensemble_5.pth
+└── README_models.md
+```
+
+Suggested `README_models.md` text:
+
+> These files contain the fifteen trained ensemble checkpoints used in the
+> PCI-recommended version of the study. Five independently trained models were
+> used for each target script: Indus, Proto-Cuneiform, and Proto-Elamite. The
+> checkpoints were originally generated in Google Colab and archived here for
+> long-term preservation.
+
+## Packaging strategy
+
+Avoid one monstrous zip unless everything is manageable. Package by component:
+
+```bash
+zip -r ivc2tyc-trained-models-v1.0.0.zip       zenodo_package/models
+zip -r ivc2tyc-embeddings-and-results-v1.0.0.zip zenodo_package/embeddings zenodo_package/results
+zip -r ivc2tyc-datasets-v1.0.0.zip             zenodo_package/datasets
+```
+
+If the models archive is too large, split it by target script — this is
+completely acceptable and often cleaner:
+
+```
+ivc2tyc-trained-models-indus-v1.0.0.zip
+ivc2tyc-trained-models-proto-cuneiform-v1.0.0.zip
+ivc2tyc-trained-models-proto-elamite-v1.0.0.zip
+```
+
+Before uploading the **datasets**, confirm whether any third-party dataset has
+reuse restrictions. The code can be MIT while the data retains its original
+terms. Safe wording for the Zenodo record:
+
+> Dataset components retain their original licenses and source attribution.
+> Newly generated derived outputs, figures, embeddings, and analysis results are
+> released under CC BY 4.0 unless otherwise noted.
+
+## Recommended Zenodo metadata
+
+**Title**
+
+> Code and data for: Quantifying Structural Similarity between Indus and
+> Tibetan–Yi Scripts Using Hybrid Vision Embeddings
+
+**Creator**
+
+> Ooha Lakkadi Reddy
+
+**Resource type**
+
+> Software (with associated dataset files), or Dataset — Zenodo allows a primary
+> type; "Software" is appropriate given the code-centric record. Use the
+> related identifiers below to link the supporting data.
+
+**Description**
+
+> Code, datasets, trained models, extracted embeddings, and generated outputs
+> supporting the PCI-recommended study *Quantifying Structural Similarity
+> between Indus and Tibetan–Yi Scripts Using Hybrid Vision Embeddings*. The
+> project uses a hybrid CNN–Transformer architecture to compare the visual
+> morphology of the Indus Valley script with the pictographic writing systems
+> of the Tibetan–Yi Corridor (including Naxi Dongba, Yi, and Ba–Shu symbols),
+> benchmarked against Proto-Cuneiform and Proto-Elamite. The deposit contains
+> the analysis notebooks, the script-character image datasets, the trained model
+> ensemble, the extracted feature embeddings, and the complete set of similarity
+> matrices, statistical results, and figures. Recommended by PCI Archaeology
+> (https://doi.org/10.24072/pci.archaeo.100711).
+
+**Keywords**
+
+```
+Indus script
+Tibetan–Yi Corridor
+Dongba script
+Ba–Shu symbols
+computational archaeology
+computer vision
+script comparison
+visual embeddings
+hybrid CNN Transformer
+```
+
+**Related identifiers**
+
+| Relation | Identifier |
+|----------|------------|
+| `is supplement to` (PCI recommendation) | https://doi.org/10.24072/pci.archaeo.100711 |
+| `is supplement to` / `is derived from` (preprint) | https://doi.org/10.5281/zenodo.20018003 |
+| `is supplement to` (source code repository) | https://github.com/oohalakkadi/ivc2tyc |
+
+## License guidance
+
+- **Code:** MIT.
+- **Third-party datasets:** retain their original licenses and source
+  attribution; do **not** relicense them. Document each source in the dataset
+  archive.
+- **Newly generated outputs** (figures, embeddings, derived tables): choose
+  **CC BY 4.0** unless there is a specific reason not to.
+
+Because Zenodo records carry a single license field, consider setting the record
+license to MIT (or CC BY 4.0) and including a clear `LICENSE`/`NOTICE` file
+inside the archives that spells out the mixed licensing above.
+
+## After publishing
+
+Minted code/data DOI: **10.5281/zenodo.20755243**.
+
+1. [x] Copy the minted DOI.
+2. [x] Add the DOI (and a DOI badge) to `README.md`.
+3. [x] Add the DOI to `CITATION.cff` (`doi:` and `identifiers:`).
+4. [ ] Update the manuscript's data availability statement.
+5. [x] Tick the corresponding items in `ARCHIVAL_CHECKLIST.md`.

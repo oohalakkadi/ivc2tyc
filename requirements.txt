@@ -1,0 +1,45 @@
+# Python dependencies for the ivc2tyc analysis.
+# Versions are intentionally left unpinned: the notebooks were developed and run
+# on Google Colab (CUDA-enabled). Install a torch/torchvision build matching your
+# own CUDA/CPU setup, and pin versions to your environment if you need bit-for-bit
+# reproducibility. See README.md (Reproducibility Notes).
+
+# Numerical / data
+numpy
+pandas
+scipy
+scikit-learn
+
+# Plotting / visualization
+matplotlib
+seaborn
+plotly
+
+# Image processing
+Pillow
+opencv-python
+scikit-image
+
+# Deep learning
+torch
+torchvision
+torchsummary
+timm
+transformers
+
+# Fonts / glyph handling
+fonttools
+
+# Graphs
+networkx
+
+# Data acquisition / scraping
+requests
+beautifulsoup4
+
+# Utilities
+tqdm
+
+# Note: google.colab is provided by the Google Colab runtime only; it is not a
+# pip-installable dependency and is required only to reproduce the original
+# Colab workflow (Google Drive mounting).
