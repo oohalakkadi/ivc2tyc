@@ -26,7 +26,7 @@ deposition, the PCI Archaeology recommendation, and CAA Proceedings publication.
 
 ## GitHub release
 
-- [ ] GitHub release created (e.g. tag `v1.0.0`)
+- [x] GitHub release created (tag `v1.0.0`)
 - [ ] GitHub–Zenodo integration enabled (for automatic code-snapshot archiving)
 
 ## Manuscript / publication
