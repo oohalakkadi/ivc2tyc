@@ -8,6 +8,9 @@ This repository contains the code, notebooks, figures, and selected reproducibil
 materials for the study *Quantifying Structural Similarity between Indus and
 Tibetan–Yi Scripts Using Hybrid Vision Embeddings*.
 
+This repository accompanies the PCI Archaeology–recommended version of the
+manuscript and the forthcoming CAA Proceedings publication.
+
 The project uses a hybrid CNN–Transformer architecture, together with an
 anthropological framework, to investigate potential historical relationships
 between the visual morphology of the Indus Valley script and the pictographic
@@ -75,9 +78,7 @@ ivc2tyc/
 │
 ├── requirements.txt            # Python dependencies
 ├── CITATION.cff                # Citation metadata
-├── LICENSE                     # MIT License (code)
-├── ZENODO_DEPOSIT_PLAN.md      # Plan for the dedicated Zenodo code/data archive
-└── ARCHIVAL_CHECKLIST.md       # Release/archival checklist
+└── LICENSE                     # MIT License (code)
 ```
 
 ## Setup and Usage
@@ -110,16 +111,18 @@ recorded in your own environment if bit-for-bit reproducibility is required.
 
 ## Data and Artifact Availability
 
-This GitHub repository holds the code, notebooks, figures, smaller datasets, and
-selected reproducibility materials. **Large research artifacts — trained model
-checkpoints, extracted embeddings, and complete generated outputs — are intended
-to be archived in a dedicated Zenodo code/data deposit**, which is the intended
-long-term archival source of record for this project.
+This GitHub repository contains the source code, notebooks, figures,
+documentation, and selected reproducibility materials.
 
-- **Dedicated code/data Zenodo archive: https://doi.org/10.5281/zenodo.20755243**
+Large research artifacts — including the trained model checkpoints, extracted
+feature embeddings, datasets, and complete experimental outputs — are permanently
+archived on Zenodo, the canonical long-term archival source of record for this
+project:
 
-See [`ZENODO_DEPOSIT_PLAN.md`](ZENODO_DEPOSIT_PLAN.md) for the contents and
-metadata of that deposit.
+- **Zenodo archive:** https://doi.org/10.5281/zenodo.20755243
+
+The Zenodo archive contains the complete datasets, trained models, feature
+embeddings, experimental outputs, and associated metadata supporting this study.
 
 > **Note on Google Drive.** Google Drive was used only as a development and Colab
 > working environment during the project. It is *not* the archival source of
@@ -133,8 +136,9 @@ metadata of that deposit.
 - Reported similarity scores, statistical tests, and figures are included under
   `figures/` and `stability_analysis/` so that published results can be inspected
   without rerunning training.
-- Full reproduction of the trained models and embeddings requires the artifacts
-  planned for the dedicated Zenodo deposit (see above).
+- Full reproduction of the trained models and experimental results requires the
+  archived artifacts available through the Zenodo record
+  (https://doi.org/10.5281/zenodo.20755243).
 
 ## Citation
 
